@@ -1,5 +1,9 @@
+@import url('https://fonts.googleapis.com/css?family=Special+Elite');
+
 .App {
   text-align: center;
+  background:#DCDCDC;
+  font-family: 'Special Elite', cursive;
 }
 
 .App-logo {
@@ -31,3 +35,40 @@
     transform: rotate(360deg);
   }
 }
+
+
+.navAndCarousel{
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+}
+
+.carousel-item > img { 
+  width: 90%; 
+}
+
+.newsOptions{
+  margin: 40px;
+}
+
+.newsCard{
+  margin-left: 5%;
+  width: 50%;
+  margin-bottom: 10%;
+}
+
+.newsOptions p {
+  font-size: 30px;
+}
+
+@media only screen and (max-width: 600px) {
+  .newsCard{
+    margin-left: 5%;
+    width: 90%;
+  }
+
+  .newsOptions p {
+    font-size: 20px;
+  }
+}
+
