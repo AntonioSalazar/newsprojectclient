@@ -15,7 +15,6 @@ const footer = () => {
         <div className="footer-copyright text-center py-3">© 2018 Copyright:
           <a href="https://www.linkedin.com/in/antonio-salazar-esquivel/"> Antonio Salazar</a>
         </div>
-        {/* Copyright */}
       </footer>
 
     )
