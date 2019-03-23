@@ -106,3 +106,10 @@
     font-size: 15px;
   }
 }
+
+.title-news-card {
+  font-weight: bold;
+  text-decoration: underline;
+  font-size: 20px
+}
+
