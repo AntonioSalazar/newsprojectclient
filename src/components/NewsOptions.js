@@ -1,16 +1,17 @@
 import React from 'react';
-import { Nav, NavLink } from 'reactstrap';
+import { Nav } from 'reactstrap';
+import {Link} from "react-router-dom"
 
 class newsOptions extends React.Component {
   render() {
     return (
-      <div className='newsOptions'>
-        <Nav>
-          <NavLink href={'/general'}><p>General</p></NavLink> 
-          <NavLink href={'/politics'}><p>Politica</p></NavLink> 
-          <NavLink href={'/security'}><p>Seguridad</p></NavLink> 
-          <NavLink href={'/sports'}> <p>Deporte</p> </NavLink> 
-          <NavLink disabled href={'/articles'}> <p>Nota Roja</p> </NavLink>
+      <div >
+        <Nav className='newsOptions'>
+          <Link to='/general'><p>General</p></Link> 
+          <Link to='/politics'><p>Politica</p></Link> 
+          <Link to='/security'><p>Seguridad</p></Link> 
+          <Link to='/sports'> <p>Deporte</p> </Link> 
+          <Link disabled to='/articles'> <p>Nota Roja</p> </Link>
         </Nav>
       </div>
     );

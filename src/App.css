@@ -44,11 +44,14 @@
 }
 
 .carousel-item > img { 
-  width: 90%; 
+  width: 70%;
 }
 
 .newsOptions{
-  margin: 40px;
+  margin: 60px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
 }
 
 .newsCard{
@@ -61,6 +64,34 @@
   font-size: 30px;
 }
 
+
+.custom-carousel-item img {
+  -webkit-filter: brightness(50%);
+  filter: brightness(50%);
+}
+
+.div-img-carousel{
+  height: 400px;
+}
+
+#carousel-img{
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+.text-carousel{
+  background: rgba(0, 0, 0, 0.527);
+  color: #fff;
+  font-weight: 100;
+  text-align: center;
+  width: 100%;
+  line-height: 1;
+}
+
+.preview-text {
+  font-size: 30px
+}
+
 @media only screen and (max-width: 600px) {
   .newsCard{
     margin-left: 5%;
@@ -70,5 +101,8 @@
   .newsOptions p {
     font-size: 20px;
   }
-}
 
+  .preview-text {
+    font-size: 15px;
+  }
+}

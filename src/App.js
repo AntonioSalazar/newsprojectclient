@@ -5,6 +5,7 @@ import Carousel from './components/TopTenCarousel'
 import NewsOptions from './components/NewsOptions'
 import NewsCard from './components/NewsCard'
 import Footer from './components/Footer'
+import {Switch, Route} from "react-router-dom";
 
 class App extends Component {
   render() {
@@ -16,7 +17,9 @@ class App extends Component {
           <Carousel style={{paddingTop: '30px'}}/>
         </div>
           <NewsOptions />
-          <NewsCard />
+          <Switch>
+            <Route exact path="/general" component={NewsCard} />
+          </Switch>
           <Footer/>
       </div>
     );
