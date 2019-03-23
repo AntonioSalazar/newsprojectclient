@@ -3,7 +3,7 @@ import React from 'react';
 const footer = () => {
 
     return(
-        <footer className="page-footer font-small stylish-color-dark pt-4">
+        <footer className="page-footer font-small stylish-color-dark pt-4" style={{background: "#161C27", color: 'white'}}>
         <div className="container text-center text-md-left">
           <div className="row">
             <div className="col-md-4 mx-auto">
@@ -15,7 +15,6 @@ const footer = () => {
         <div className="footer-copyright text-center py-3">© 2018 Copyright:
           <a href="https://www.linkedin.com/in/antonio-salazar-esquivel/"> Antonio Salazar</a>
         </div>
-        {/* Copyright */}
       </footer>
 
     )
