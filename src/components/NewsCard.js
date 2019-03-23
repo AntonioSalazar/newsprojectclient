@@ -1,22 +1,64 @@
 import React, {Component} from 'react';
-import { Card, CardImg, CardText, CardBody,
+import { Card, CardImg, CardBody,
   CardTitle, CardSubtitle, Button } from 'reactstrap';
+import {Link} from "react-router-dom"
+import logo from "../assets/logo.png"
 
 
-const NewsCard = (props) => {
-  return (
-    <div style={{marginTop: "20px"}}>
-            <Card className="newsCard" style={{textAlign: 'left'}}>
-                <CardImg top width="100%" src="https://placeholdit.imgix.net/~text?txtsize=33&txt=318%C3%97180&w=318&h=180" alt="Card image cap" />
-                <CardBody>
-                <CardTitle>Card title</CardTitle>
-                <CardSubtitle>Card subtitle</CardSubtitle>
-                <CardText>Some quick example text to build on the card title and make up the bulk of the card's content.</CardText>
-                <Button>Button</Button>
-                </CardBody>
-            </Card>
-    </div>
-  );
-};
+class NewsCard extends Component {
+  state = {
+    theNews: []
+  }
+
+  componentDidMount(){
+    this.getNewsFromTopic()
+  }
+
+  getNewsFromTopic = () => {
+    const {params} = this.props.match
+    fetch(`https://newsapi.org/v2/top-headlines?country=mx&category=${params.topic}&apiKey=8631d37e5233459cb78edcb073b174ff`)
+    .then(responseFromAPI => {
+      responseFromAPI.json()
+      .then(data => {
+        const theNews = data.articles
+        this.setState({
+          theNews
+        })
+      })
+      .catch(err => console.log(err))
+    })
+  }
+
+  render(){
+    return(
+      <div style={{marginTop: "20px", paddingBottom: "20px"}}>
+        <Card className="newsCard" style={{textAlign: 'left'}}>
+          {
+            this.state.theNews.map((oneArticle, index) => {
+              if (oneArticle.urlToImage === null) {
+                console.log(logo);
+                return oneArticle.urlToImage = logo
+              }
+               return(
+                <div key={index}>
+                  <CardImg top width="100%" src={oneArticle.urlToImage} alt="Card image cap" />
+                  <CardBody style={{marginBottom: "20px"}}>
+                  <CardTitle><p className="title-news-card">{oneArticle.title}</p></CardTitle>
+                  <CardSubtitle><p>{oneArticle.description}</p></CardSubtitle>
+                  <Button>
+                    <Link style={{textDecoration: "none"}}>Articulo Completo</Link>
+                  </Button> 
+                  </CardBody>   
+                  <br/>               
+                </div>
+             )
+            })
+          }
+        </Card>
+      </div>   
+         
+    )
+  }
+}
 
 export default NewsCard;
