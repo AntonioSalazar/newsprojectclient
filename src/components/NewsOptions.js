@@ -7,7 +7,7 @@ class newsOptions extends React.Component {
     return (
       <div >
         <Nav className='newsOptions'>
-          <Link to='/general'><p>General</p></Link> 
+          <Link to='news/business'><p>Negocios</p></Link> 
           <Link to='/politics'><p>Politica</p></Link> 
           <Link to='/security'><p>Seguridad</p></Link> 
           <Link to='/sports'> <p>Deporte</p> </Link> 
