@@ -4,11 +4,12 @@ import { Card, CardImg, CardBody,
 import {Link} from "react-router-dom"
 import logo from "../assets/logo.png"
 
-
 class NewsCard extends Component {
   state = {
     theNews: []
   }
+
+  
 
   componentDidMount(){
     this.getNewsFromTopic()
@@ -36,17 +37,16 @@ class NewsCard extends Component {
           {
             this.state.theNews.map((oneArticle, index) => {
               if (oneArticle.urlToImage === null) {
-                console.log(logo);
                 return oneArticle.urlToImage = logo
               }
                return(
-                <div key={index}>
+                <div key={index} className="article-card">
                   <CardImg top width="100%" src={oneArticle.urlToImage} alt="Card image cap" />
                   <CardBody style={{marginBottom: "20px"}}>
                   <CardTitle><p className="title-news-card">{oneArticle.title}</p></CardTitle>
                   <CardSubtitle><p>{oneArticle.description}</p></CardSubtitle>
-                  <Button>
-                    <Link style={{textDecoration: "none"}}>Articulo Completo</Link>
+                  <Button style={{textDecoration: "none"}} color="danger">
+                    <Link to={`/news/${oneArticle.title}`} style={{textDecoration: "none"}}>Articulo Completo</Link>
                   </Button> 
                   </CardBody>   
                   <br/>               

@@ -11,7 +11,7 @@ class newsOptions extends React.Component {
           <Link to='news/technology'><p>Tecnologia</p></Link> 
           <Link to='news/security'><p>Seguridad</p></Link> 
           <Link to='news/sports'> <p>Deporte</p> </Link> 
-          <Link disabled to='/articles'> <p>Nota Roja</p> </Link>
+          <Link disabled to='news/articles'> <p>Nota Roja</p> </Link>
         </Nav>
       </div>
     );
