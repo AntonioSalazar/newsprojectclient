@@ -6,6 +6,7 @@ import NewsOptions from './components/NewsOptions'
 import NewsCard from './components/NewsCard'
 import Footer from './components/Footer'
 import {Switch, Route} from "react-router-dom"
+import Dashboard from "./components/Dashboard"
 
 class App extends Component {
   render() {
@@ -13,8 +14,12 @@ class App extends Component {
       <div className="App">
         <div className="navAndCarousel">
           <Navbar />
-          <h1 style={{textAlign: 'left', margin: '50px'}}>Ultimas Noticias:</h1>
+          <div className="weather-widget">
+            <h2 style={{textAlign: 'left', margin: '20px'}}>Ultimas Noticias:</h2>
+            <div id="openweathermap-widget-4" style={{paddingTop: "15px"}}></div>            
+          </div>
         </div>
+        
           <Switch>
             <Route exact path="/" component={Carousel}/>
           </Switch>
@@ -22,6 +27,7 @@ class App extends Component {
           <Switch>
             <Route exact path="/news/:topic" component={NewsCard}/>
           </Switch>
+          <Dashboard />
           <Footer/>
       </div>
     );
