@@ -1,29 +1,26 @@
-import React, {Component} from 'react';
+import React, {Component} from "react";
+import {Link} from "react-router-dom";
 import { Card, CardImg, CardBody,
   CardTitle, CardSubtitle, Button } from 'reactstrap';
-import {Link} from "react-router-dom"
-import logo from "../assets/logo.png"
 
-class NewsCard extends Component {
+class Dashboard extends Component {
+
   state = {
-    theNews: []
+    allNews: []
   }
-
-  
 
   componentDidMount(){
-    this.getNewsFromTopic()
+    this.allNews()
   }
 
-  getNewsFromTopic = () => {
-    const {params} = this.props.match
-    fetch(`https://newsapi.org/v2/top-headlines?country=mx&category=${params.topic}&apiKey=8631d37e5233459cb78edcb073b174ff`)
-    .then(responseFromAPI => {
-      responseFromAPI.json()
+  allNews = () => {
+    fetch("https://newsapi.org/v2/top-headlines?sources=google-news&apiKey=8631d37e5233459cb78edcb073b174ff")
+    .then(newFromAPI => {
+      newFromAPI.json()
       .then(data => {
-        const theNews = data.articles
+        const Articles = data.articles
         this.setState({
-          theNews
+          allNews: Articles
         })
       })
       .catch(err => console.log(err))
@@ -32,13 +29,10 @@ class NewsCard extends Component {
 
   render(){
     return(
-      <div style={{marginTop: "20px", paddingBottom: "20px"}}>
+      <div>
         <Card className="newsCard" style={{textAlign: 'left'}}>
           {
-            this.state.theNews.map((oneArticle, index) => {
-              if (oneArticle.urlToImage === null) {
-                return oneArticle.urlToImage = logo
-              }
+            this.state.allNews.map((oneArticle, index) => {
                return(
                 <div key={index} className="article-card">
                   <CardImg top width="100%" src={oneArticle.urlToImage} alt="Card image cap" />
@@ -55,10 +49,9 @@ class NewsCard extends Component {
             })
           }
         </Card>
-      </div>   
-         
+      </div>
     )
   }
 }
 
-export default NewsCard;
+export default Dashboard;

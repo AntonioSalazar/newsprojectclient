@@ -16,9 +16,12 @@ class TopTenCarousel extends Component {
   getNewsFromAPI = () => {
     fetch("https://newsapi.org/v2/top-headlines?country=mx&apiKey=8631d37e5233459cb78edcb073b174ff")
     .then(responseFromAPI => {
-      responseFromAPI.json().then(jsonNews => {
+      responseFromAPI.json()
+      .then(jsonNews => {
+        const threeArticles = jsonNews.articles.slice(0, 3)
+        console.log(threeArticles)
         this.setState({
-          newsFromAPI: jsonNews.articles
+          newsFromAPI: threeArticles
         })
       })
     })

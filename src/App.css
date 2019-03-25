@@ -68,10 +68,12 @@
 .custom-carousel-item img {
   -webkit-filter: brightness(50%);
   filter: brightness(50%);
+  height: 100%;
 }
 
 .div-img-carousel{
-  height: 400px;
+  height: 500px;
+  background: green;
 }
 
 #carousel-img{
@@ -113,3 +115,21 @@
   font-size: 20px
 }
 
+Link {
+  text-decoration: none
+}
+
+.article-card Link{
+  color: white;
+  text-decoration: none
+}
+
+Link :hover {
+  color: white;
+}
+
+.weather-widget {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+}
