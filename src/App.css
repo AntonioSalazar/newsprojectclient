@@ -58,6 +58,7 @@
   margin-left: 5%;
   width: 50%;
   margin-bottom: 10%;
+  border-bottom: 5px, solid, black;
 }
 
 .newsOptions p {
@@ -117,6 +118,10 @@
 
 Link {
   text-decoration: none
+}
+
+.article-card{
+  padding-bottom: 10px;
 }
 
 .article-card Link{

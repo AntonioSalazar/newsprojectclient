@@ -9,8 +9,6 @@ class NewsCard extends Component {
     theNews: []
   }
 
-  
-
   componentDidMount(){
     this.getNewsFromTopic()
   }
@@ -31,6 +29,7 @@ class NewsCard extends Component {
   }
 
   render(){
+    const {params} = this.props.match
     return(
       <div style={{marginTop: "20px", paddingBottom: "20px"}}>
         <Card className="newsCard" style={{textAlign: 'left'}}>
@@ -46,14 +45,14 @@ class NewsCard extends Component {
                   <CardTitle><p className="title-news-card">{oneArticle.title}</p></CardTitle>
                   <CardSubtitle><p>{oneArticle.description}</p></CardSubtitle>
                   <Button style={{textDecoration: "none"}} color="danger">
-                    <Link to={`/news/${oneArticle.title}`} style={{textDecoration: "none"}}>Articulo Completo</Link>
+                    <Link to={`/news/${params.topic}/${oneArticle.title}`} style={{textDecoration: "none"}}>Articulo Completo</Link>
                   </Button> 
-                  </CardBody>   
-                  <br/>               
-                </div>
+                  </CardBody>                
+                </div> 
              )
             })
           }
+          <br/>
         </Card>
       </div>   
          

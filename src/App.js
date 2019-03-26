@@ -7,6 +7,7 @@ import NewsCard from './components/NewsCard'
 import Footer from './components/Footer'
 import {Switch, Route} from "react-router-dom"
 import Dashboard from "./components/Dashboard"
+import ArticleDetails from "./components/ArticleDetails"
 
 class App extends Component {
   render() {
@@ -19,15 +20,19 @@ class App extends Component {
             <div id="openweathermap-widget-4" style={{paddingTop: "15px"}}></div>            
           </div>
         </div>
-        
+        <NewsOptions />
           <Switch>
-            <Route exact path="/" component={Carousel}/>
+            <Route exact path="/" render={ () => (
+              <div>
+                <Carousel />
+                <Dashboard />
+              </div>
+            )} />
           </Switch>
-          <NewsOptions />
           <Switch>
-            <Route exact path="/news/:topic" component={NewsCard}/>
+            <Route exact path="/:topic" component={NewsCard}/>
+            <Route exact path="/news/:topic/:title" component={ArticleDetails} />
           </Switch>
-          <Dashboard />
           <Footer/>
       </div>
     );

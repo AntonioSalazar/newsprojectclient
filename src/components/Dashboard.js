@@ -14,13 +14,14 @@ class Dashboard extends Component {
   }
 
   allNews = () => {
-    fetch("https://newsapi.org/v2/top-headlines?sources=google-news&apiKey=8631d37e5233459cb78edcb073b174ff")
+    fetch("https://newsapi.org/v2/top-headlines?country=mx&apiKey=8631d37e5233459cb78edcb073b174ff")
     .then(newFromAPI => {
       newFromAPI.json()
       .then(data => {
         const Articles = data.articles
+        const firstArticles = Articles.slice(0, 10)
         this.setState({
-          allNews: Articles
+          allNews: firstArticles
         })
       })
       .catch(err => console.log(err))
