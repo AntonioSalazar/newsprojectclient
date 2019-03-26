@@ -19,7 +19,6 @@ class TopTenCarousel extends Component {
       responseFromAPI.json()
       .then(jsonNews => {
         const threeArticles = jsonNews.articles.slice(0, 3)
-        console.log(threeArticles)
         this.setState({
           newsFromAPI: threeArticles
         })

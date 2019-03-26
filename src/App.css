@@ -70,6 +70,7 @@
   -webkit-filter: brightness(50%);
   filter: brightness(50%);
   height: 100%;
+  width: 100%;
 }
 
 .div-img-carousel{

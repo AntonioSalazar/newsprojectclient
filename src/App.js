@@ -7,7 +7,8 @@ import NewsCard from './components/NewsCard'
 import Footer from './components/Footer'
 import {Switch, Route} from "react-router-dom"
 import Dashboard from "./components/Dashboard"
-import ArticleDetails from "./components/ArticleDetails"
+import DashboardArticle from "./components/DashboardArticle"
+import ArticleDetails from './components/ArticleDetails';
 
 class App extends Component {
   render() {
@@ -25,13 +26,13 @@ class App extends Component {
             <Route exact path="/" render={ () => (
               <div>
                 <Carousel />
+                <hr/>
                 <Dashboard />
               </div>
             )} />
-          </Switch>
-          <Switch>
-            <Route exact path="/:topic" component={NewsCard}/>
-            <Route exact path="/news/:topic/:title" component={ArticleDetails} />
+            <Route  exact path="/:topic" component={NewsCard}/>
+            <Route  exact path="/:topic/:title" component={ArticleDetails}/>
+            <Route  path="/news/dashboard/:title" component={DashboardArticle} />
           </Switch>
           <Footer/>
       </div>

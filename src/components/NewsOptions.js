@@ -8,7 +8,7 @@ class newsOptions extends React.Component {
       <div >
         <Nav className='newsOptions'>
           <Breadcrumb tag="nav" listTag="div">
-            <BreadcrumbItem tag="a" href="/business">Negocios</BreadcrumbItem>
+            <BreadcrumbItem tag="a" href="/science">Ciencia</BreadcrumbItem>
             <BreadcrumbItem tag="a" href="/technology">Tecnologia</BreadcrumbItem>
             <BreadcrumbItem tag="a" href="/sports">Deportes</BreadcrumbItem>
             <BreadcrumbItem active tag="span" href="/articles">Nota Roja</BreadcrumbItem>

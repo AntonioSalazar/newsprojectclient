@@ -1,4 +1,7 @@
 import React, {Component} from "react";
+import { Card, CardImg, CardBody,
+  CardTitle, CardSubtitle, Button } from 'reactstrap';
+import {Link} from "react-router-dom"
 
 
 class ArticleDetails extends Component {
@@ -24,7 +27,6 @@ class ArticleDetails extends Component {
         this.setState({
           theArticle: singleArticle
         })
-        console.log(this.state.theArticle)
       })
       .catch(err => console.log(err))
     })
@@ -33,15 +35,25 @@ class ArticleDetails extends Component {
   render(){
     return(
       <div>
-       {
-         this.state.theArticle.map((article, index )=> {
-           return(
-             <div key={index}>
-              <h1>{article.author}</h1>
-             </div>
-           )
-         })
-       }
+        <Card className="newsCard" style={{textAlign: 'left'}}>
+          {
+            this.state.theArticle.map((oneArticle, index) => {
+               return(
+                <div key={index} className="article-card">
+                  <CardImg top width="100%" src={oneArticle.urlToImage} alt="Card image cap" />
+                  <CardBody style={{marginBottom: "20px"}}>
+                  <CardTitle><p className="title-news-card">{oneArticle.title}</p></CardTitle>
+                  <CardSubtitle><p>{oneArticle.description}</p></CardSubtitle>
+                  <Button style={{textDecoration: "none"}} color="danger">
+                    <Link to={`/`} style={{textDecoration: "none"}}>Regreso</Link>
+                  </Button> 
+                  </CardBody>                
+                </div> 
+             )
+            })
+          }
+          <br/>
+        </Card>
       </div>
     )
   }
