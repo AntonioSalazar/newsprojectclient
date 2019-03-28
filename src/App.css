@@ -146,6 +146,7 @@ Link :hover {
   display: flex;
   flex-direction: row;
   justify-content: space-around;
+  margin-top: 100px;
 }
 
 .with-twitter {
@@ -159,4 +160,8 @@ Link :hover {
   flex-direction: row;
   justify-content: space-around;
   padding-right: 120px;
+}
+
+.tweets-positioning {
+  position: fixed;
 }

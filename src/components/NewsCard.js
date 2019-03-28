@@ -25,8 +25,9 @@ class NewsCard extends Component {
       responseFromAPI.json()
       .then(data => {
         const theNews = data.articles
+        const firstArticles = theNews.slice(0, 10)
         this.setState({
-          theNews
+          theNews: firstArticles
         })
       })
       .catch(err => console.log(err))
@@ -59,7 +60,7 @@ class NewsCard extends Component {
           }
           <br/>
         </Card>
-        { params.topic === "science" ? <TweetsScience /> : null}
+        { params.topic === "science" ? <TweetsScience className="tweets-positioning" /> : null}
         { params.topic === "technology" ? <TweetsTech /> : null}
         { params.topic === "sports" ? <TweetsSports /> : null}
       </div>       

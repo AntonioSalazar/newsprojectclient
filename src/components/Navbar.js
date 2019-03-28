@@ -30,7 +30,7 @@ class Navigation extends Component {
   render() {
     return (
       <div>
-        <Navbar color="danger" light expand="md" sticky="top">
+        <Navbar color="danger" light expand="md" fixed="top">
           <NavbarBrand ><div><a href={"/"}><img src={logo} alt={logo} style={{width: '50px', marginLeft: '40px'}}/></a></div></NavbarBrand>
           <NavbarToggler onClick={this.toggle} />
           <Collapse isOpen={this.state.isOpen} navbar>

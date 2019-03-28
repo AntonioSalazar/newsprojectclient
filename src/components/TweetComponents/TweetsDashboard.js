@@ -7,7 +7,7 @@ class Tweets extends Component {
 
   render(){
     return(
-      <div>
+      <div >
           <TwitterTimelineEmbed 
             sourceType="profile"
             screenName="SinEmbargoMX"

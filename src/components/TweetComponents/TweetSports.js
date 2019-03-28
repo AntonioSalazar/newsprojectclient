@@ -15,7 +15,7 @@ class TweetsSports extends Component {
           />
         <TwitterTimelineEmbed 
             sourceType="profile"
-            screenName="FOXDeportes"
+            screenName="TD_Deportes"
             options={{height: 400}}
           />
          <TwitterTimelineEmbed
