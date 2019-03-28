@@ -2,6 +2,7 @@ import React, {Component} from "react";
 import {Link} from "react-router-dom";
 import { Card, CardImg, CardBody,
   CardTitle, CardSubtitle, Button } from 'reactstrap';
+import Tweets from "./TweetComponents/TweetsDashboard"
 
 class Dashboard extends Component {
 
@@ -30,7 +31,7 @@ class Dashboard extends Component {
 
   render(){
     return(
-      <div>
+      <div className="with-twitter">
         <Card className="newsCard" style={{textAlign: 'left'}}>
           {
             this.state.allNews.map((oneArticle, index) => {
@@ -50,6 +51,7 @@ class Dashboard extends Component {
             })
           }
         </Card>
+        <Tweets />
       </div>
     )
   }

@@ -3,6 +3,9 @@ import { Card, CardImg, CardBody,
   CardTitle, CardSubtitle, Button } from 'reactstrap';
 import {Link} from "react-router-dom"
 import logo from "../assets/logo.png"
+import TweetsScience from "./TweetComponents/TweetsScience"
+import TweetsTech from "./TweetComponents/TweetsTech"
+import TweetsSports from "./TweetComponents/TweetSports"
 
 class NewsCard extends Component {
   state = {
@@ -12,6 +15,8 @@ class NewsCard extends Component {
   componentDidMount(){
     this.getNewsFromTopic()
   }
+
+
 
   getNewsFromTopic = () => {
     const {params} = this.props.match
@@ -31,7 +36,7 @@ class NewsCard extends Component {
   render(){
     const {params} = this.props.match
     return(
-      <div style={{marginTop: "20px", paddingBottom: "20px"}}>
+      <div style={{marginTop: "20px", paddingBottom: "20px"}} className="card-and-tweets">
         <Card className="newsCard" style={{textAlign: 'left'}}>
           {
             this.state.theNews.map((oneArticle, index) => {
@@ -54,6 +59,9 @@ class NewsCard extends Component {
           }
           <br/>
         </Card>
+        { params.topic === "science" ? <TweetsScience /> : null}
+        { params.topic === "technology" ? <TweetsTech /> : null}
+        { params.topic === "sports" ? <TweetsSports /> : null}
       </div>       
     )
   }

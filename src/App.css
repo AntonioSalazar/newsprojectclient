@@ -1,9 +1,9 @@
-@import url('https://fonts.googleapis.com/css?family=Special+Elite');
+@import url('https://fonts.googleapis.com/css?family=Cantarell');
 
 .App {
   text-align: center;
   background:#DCDCDC;
-  font-family: 'Special Elite', cursive;
+  font-family: 'Cantarell', sans-serif;
 }
 
 .App-logo {
@@ -48,7 +48,10 @@
 }
 
 .newsOptions{
-  margin: 60px;
+  margin-left: 60px;
+  margin-bottom: 60px;
+  margin-right: 60px;
+  margin-top: 20px;
   display: flex;
   flex-direction: row;
   justify-content: space-around;
@@ -109,6 +112,11 @@
   .preview-text {
     font-size: 15px;
   }
+
+  .with-twitter {
+    display: flex;
+    flex-direction: column;
+  }
 }
 
 .title-news-card {
@@ -138,4 +146,17 @@ Link :hover {
   display: flex;
   flex-direction: row;
   justify-content: space-around;
+}
+
+.with-twitter {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+}
+
+.card-and-tweets{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  padding-right: 120px;
 }
