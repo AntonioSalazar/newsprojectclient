@@ -7,7 +7,7 @@ const footer = () => {
         <div className="container text-center text-md-left">
           <div className="row">
             <div className="col-md-4 mx-auto">
-              <h5 className="font-weight-bold text-uppercase mt-3 mb-4">Acerca de este proyecto:</h5>
+              <h5 className="font-weight-bold text-uppercase mt-3 mb-4" style={{color: 'white'}}>Acerca de este proyecto:</h5>
               <p>Este proyecto consume una API propia asi como LA API de <a href="https://newsapi.org/">News API</a> </p>
             </div>
           </div>
