@@ -15,19 +15,48 @@ import 'antd/dist/antd.css'
 
 class App extends Component {
 
+  constructor(props){
+    super(props)
+    this.state = {
+      loggedInUser : null
+    }
+  }
+
+  fetchUser(){
+    if( this.state.loggedInUser === null ){
+      this.service.loggedin()
+      .then(response =>{
+        this.setState({
+          loggedInUser:  response
+        }) 
+      })
+      .catch( err =>{
+        this.setState({
+          loggedInUser:  false
+        }) 
+      })
+    }
+  }
+
+  getTheUser = (userObj) => {
+    this.setState({
+      loggedInUser: userObj
+    })
+  }
 
 
   render() {
     return (
       <div className="App">
-        <div className="navAndCarousel">
-          <Navbar userInSession={this.state.loggedInUser}/>
-          <div className="weather-widget">
-            <h2 style={{textAlign: 'left', margin: '20px'}}>Ultimas Noticias:</h2>
-            <div id="openweathermap-widget-4" style={{paddingTop: "15px"}}></div>            
+
+          <div className="navAndCarousel">
+            <Navbar userInSession={this.state.loggedInUser}/>
+            <div className="weather-widget">
+              <h2 style={{textAlign: 'left', margin: '20px'}}>Ultimas Noticias:</h2>
+              <div id="openweathermap-widget-4" style={{paddingTop: "15px"}}></div>            
+            </div>
           </div>
-        </div>
-       
+          
           <Switch>
             <Route exact path="/" render={ () => (
               <div>
@@ -38,7 +67,7 @@ class App extends Component {
                 <Dashboard />
               </div>
             )} />
-            <Route exact path='/signup' render={() => <Signup getTheUser={this.getTheUser}/>} />
+            <Route exact path='/signup' render={() => <Signup getUser={this.getTheUser}/>} />
             <Route  exact path="/:topic" component={NewsCard}/>
             <Route  exact path="/:topic/:title" component={ArticleDetails}/>
             <Route  path="/news/dashboard/:title" component={DashboardArticle} />
