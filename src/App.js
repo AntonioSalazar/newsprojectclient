@@ -13,18 +13,17 @@ import 'antd/dist/antd.css';
 import Signup from './components/auth/Signup'
 import 'antd/dist/antd.css'
 import AuthService from './components/auth/auth-service';
+import Login from './components/auth/Login'
 
 
 class App extends Component {
 
   constructor(props){
     super(props)
-    this.state = {
-      loggedInUser : null
-    }
-    this.service = new AuthService()
+    this.state = {loggedInUser : null}
+    this.service = new AuthService();
   }
-
+  
   fetchUser(){
     if( this.state.loggedInUser === null ){
       this.service.loggedin()
@@ -48,6 +47,9 @@ class App extends Component {
   }
 
 
+
+
+
   render() {
     this.fetchUser()
     if(this.state.loggedInUser){
@@ -62,6 +64,15 @@ class App extends Component {
             </div>
           </div>
 
+          <Route exact path="/logout" render={() => (
+              <div>
+              <Carousel />
+              <hr/>
+              <NewsOptions />
+              <hr/>
+              <Dashboard />
+              </div>
+          )}/> 
 
           <Switch>
             <Route exact path="/" render={ () => (
@@ -79,7 +90,8 @@ class App extends Component {
           </Switch>
         </div>        
       )
-    } else {
+    }
+     else {
       return (
         <div className="App">
 
@@ -100,8 +112,10 @@ class App extends Component {
               <NewsOptions />
               <hr/>
               <Dashboard />
+              <hr/>
             </div>
-          )} />
+          )} />          
+          <Route exact path='/login' render={() => <Login getUser={this.getTheUser}/>}/>
           <Route exact path='/signup' render={() => <Signup getUser={this.getTheUser}/>} />
           <Route  exact path="/:topic" component={NewsCard}/>
           <Route  exact path="/:topic/:title" component={ArticleDetails}/>

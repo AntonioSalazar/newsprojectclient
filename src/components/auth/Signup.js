@@ -41,21 +41,23 @@ class Signup extends Component {
   render(){
     return(
       <div>
-        <form onSubmit={this.handleFormSubmit}>
+        <form onSubmit={this.handleFormSubmit} className="signup-form">
           <label htmlFor="username">Nombre de Usuario:</label>
-          <input type="text" name="username" value={this.state.username} onChange={e => this.handleChange(e)}/>
+          <input type="text" name="username" value={this.state.username} placeholder="Nombre de usuario..." onChange={e => this.handleChange(e)}/>
 
           <label htmlFor="email">Email</label>
-          <input type="text" name="email" value={this.state.email} onChange={e => this.handleChange(e)} />
+          <input type="text" name="email" value={this.state.email} placeholder="Email" onChange={e => this.handleChange(e)} />
 
           <label htmlFor="password">Password:</label>
-          <input type="password" name="password" value={this.state.password} onChange={e => this.handleChange(e)}/>
+          <input type="password" name="password" value={this.state.password} placeholder="Contrasena" onChange={e => this.handleChange(e)}/>
 
-          <input type="submit" value="Signup!"/>
+          <input type="submit" value="Signup!" className="submit-btn" style={{marginTop: '10px'}}/>
         </form>
+        <div style={{marginBottom: "30px"}}>
+            <p>Already have an account?</p>
+            <Link to={"/"} >Login</Link>            
+        </div>
 
-        <p>Already have an account?</p>
-        <Link to={"/login"}>Login</Link>
       </div>
     )
   }

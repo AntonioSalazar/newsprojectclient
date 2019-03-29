@@ -147,7 +147,7 @@ Link :hover {
   flex-direction: row;
   justify-content: space-around;
   margin-top: 30px;
-  margin-bottom: 50px;
+  margin-bottom: 30px;
 }
 
 .with-twitter {
@@ -182,7 +182,7 @@ Link :hover {
 }
 
 .navbar-styles img {
-  width: 100px;
+  width: 80px;
 }
 
 .logo-signup-login {
@@ -193,4 +193,42 @@ Link :hover {
 
 nav Link {
   text-decoration: none;
+}
+
+.signup-form {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 30px;
+  padding-top: 0px;
+}
+
+.signup-form input[type=text ]{
+  width: 20%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+
+.signup-form input[type=password]{
+  width: 20%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+
+.submit-btn{
+  border-radius: 4px;
+  background: #DC3545;
+  color: white;
+  display: inline-block;
+  border: 1px solid #ccc;
+  box-sizing: border-box;
+  width: 100px;
+  height: 40px
 }
