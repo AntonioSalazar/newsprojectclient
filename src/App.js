@@ -52,7 +52,7 @@ class App extends Component {
     if (this.state.loggedInUser) {
       return(
         <div className="App">
-          <Navbar userInSession={this.state.loggedInUser} />
+          <Navbar userInSession={this.state.loggedInUser} getUser={this.getTheUser}/>
           <Switch>
 
             <Route exact path="/" render={() => (

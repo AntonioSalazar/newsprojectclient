@@ -18,7 +18,7 @@ class Navbar extends Component {
     this.service.logout()
     .then(() => {
       this.setState({loggedInUser: null})
-      // this.props.getUser(null)
+      this.props.getUser(null)
     })
   }
 
@@ -45,7 +45,7 @@ class Navbar extends Component {
             </ul>
           </nav>
           <div className="weather-widget">
-              <h2 style={{textAlign: 'left', margin: '20px'}}>Las ultimas noticias todo el tiempo:</h2>
+              <h2 style={{textAlign: 'left', margin: '20px'}}>Bienvenido {this.state.loggedInUser.username}, puedes elegir una categoria:</h2>
               <div id="openweathermap-widget-4" style={{paddingTop: "15px"}}></div>            
             </div>
         </div>

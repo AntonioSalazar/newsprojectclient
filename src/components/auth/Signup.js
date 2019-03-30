@@ -54,7 +54,7 @@ class Signup extends Component {
           <input type="submit" value="Signup!" className="submit-btn" style={{marginTop: '10px'}}/>
         </form>
         <div style={{marginBottom: "30px"}}>
-            <p>Already have an account?</p>
+            <p>Ya tienes cuenta?</p>
             <Link to={"/login"} >Login</Link>            
         </div>
 

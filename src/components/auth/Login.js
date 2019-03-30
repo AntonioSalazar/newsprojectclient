@@ -31,13 +31,13 @@ class Login extends Component {
           <div className="login-form">
             <form onSubmit={this.handleFormSubmit} className="styles-login-form">
               <label>Email:</label>
-              <input type="text" name="username" value={this.state.username} onChange={ e => this.handleChange(e)} placeholder="email"/>
+              <input type="text" name="username" value={this.state.username} onChange={ e => this.handleChange(e)} placeholder="Email"/>
               <label>Password:</label>
-              <input type="password" name="password" value={this.state.password} onChange={ e => this.handleChange(e)}  placeholder="contrasena"/>
+              <input type="password" name="password" value={this.state.password} onChange={ e => this.handleChange(e)}  placeholder="Contrasena"/>
               
               <input type="submit" value="Login" className="submit-btn" style={{marginTop: '10px'}}/>
             </form>
-            <p>Don't have account? 
+            <p>No tienes cuenta? 
                 <Link to={"/signup"}> Signup</Link>
             </p>
           </div>
