@@ -6,6 +6,7 @@ import logo from "../assets/logo.png"
 import TweetsScience from "./TweetComponents/TweetsScience"
 import TweetsTech from "./TweetComponents/TweetsTech"
 import TweetsSports from "./TweetComponents/TweetSports"
+import NewsOptions from "./NewsOptions"
 
 class NewsCard extends Component {
   state = {
@@ -37,32 +38,35 @@ class NewsCard extends Component {
   render(){
     const {params} = this.props.match
     return(
-      <div style={{marginTop: "20px", paddingBottom: "20px"}} className="card-and-tweets">
-        <Card className="newsCard" style={{textAlign: 'left'}}>
-          {
-            this.state.theNews.map((oneArticle, index) => {
-              if (oneArticle.urlToImage === null) {
-                return oneArticle.urlToImage = logo
-              }
-               return(
-                <div key={index} className="article-card">
-                  <CardImg top width="100%" src={oneArticle.urlToImage} alt="Card image cap" />
-                  <CardBody style={{marginBottom: "20px"}}>
-                  <CardTitle><p className="title-news-card">{oneArticle.title}</p></CardTitle>
-                  <CardSubtitle><p>{oneArticle.description}</p></CardSubtitle>
-                  <Button style={{textDecoration: "none"}} color="danger">
-                    <Link to={`/${params.topic}/${oneArticle.title}`} style={{textDecoration: "none"}}>Articulo Completo</Link>
-                  </Button> 
-                  </CardBody>                
-                </div> 
-             )
-            })
-          }
-          <br/>
-        </Card>
-        { params.topic === "science" ? <TweetsScience className="tweets-positioning" /> : null}
-        { params.topic === "technology" ? <TweetsTech /> : null}
-        { params.topic === "sports" ? <TweetsSports /> : null}
+      <div>
+        <NewsOptions />
+        <div style={{marginTop: "20px", paddingBottom: "20px"}} className="card-and-tweets">
+          <Card className="newsCard" style={{textAlign: 'left'}}>
+            {
+              this.state.theNews.map((oneArticle, index) => {
+                if (oneArticle.urlToImage === null) {
+                  return oneArticle.urlToImage = logo
+                }
+                return(
+                  <div key={index} className="article-card">
+                    <CardImg top width="100%" src={oneArticle.urlToImage} alt="Card image cap" />
+                    <CardBody style={{marginBottom: "20px"}}>
+                    <CardTitle><p className="title-news-card">{oneArticle.title}</p></CardTitle>
+                    <CardSubtitle><p>{oneArticle.description}</p></CardSubtitle>
+                    <Button style={{textDecoration: "none"}} color="danger">
+                      <Link to={`/${params.topic}/${oneArticle.title}`} style={{textDecoration: "none"}}>Articulo Completo</Link>
+                    </Button> 
+                    </CardBody>                
+                  </div> 
+              )
+              })
+            }
+            <br/>
+          </Card>
+          { params.topic === "science" ? <TweetsScience className="tweets-positioning" /> : null}
+          { params.topic === "technology" ? <TweetsTech /> : null}
+          { params.topic === "sports" ? <TweetsSports /> : null}
+        </div>
       </div>       
     )
   }

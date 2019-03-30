@@ -9,11 +9,9 @@ import {Switch, Route} from "react-router-dom"
 import Dashboard from "./components/Dashboard"
 import DashboardArticle from "./components/DashboardArticle"
 import ArticleDetails from './components/ArticleDetails';
-import 'antd/dist/antd.css';
 import Signup from './components/auth/Signup'
-import 'antd/dist/antd.css'
 import AuthService from './components/auth/auth-service';
-import Login from './components/auth/Login'
+// import Login from './components/auth/Login'
 
 
 class App extends Component {
@@ -23,19 +21,22 @@ class App extends Component {
     this.state = {loggedInUser : null}
     this.service = new AuthService();
   }
-  
-  fetchUser(){
-    if( this.state.loggedInUser === null ){
+
+
+
+
+  fetchUser() {
+    if (this.state.loggedInUser === null) {
       this.service.loggedin()
-      .then(response =>{
+      .then(response => {
         this.setState({
-          loggedInUser:  response
-        }) 
+          loggedInUser: response
+        })
       })
-      .catch( err =>{
+      .catch(err => {
         this.setState({
-          loggedInUser:  false
-        }) 
+          loggedInUser: false
+        })
       })
     }
   }
@@ -46,84 +47,56 @@ class App extends Component {
     })
   }
 
-
-
-
-
   render() {
     this.fetchUser()
-    if(this.state.loggedInUser){
+    if (this.state.loggedInUser) {
+      return(
+        <div className="App">
+          <Navbar userInSession={this.state.loggedInUser} />
+          <Switch>
+
+            <Route exact path="/" render={() => (
+                <div>
+                  <Carousel />
+                <hr/>
+                  <NewsOptions />
+                <hr/>
+                  <Dashboard />
+                </div>
+              )}/> 
+
+              <Route exact path="/:topic" component={NewsCard}/>
+              <Route exact path="/:topic/:title" component={ArticleDetails} />
+              <Route exact path="/news/dashboard/:title" component={DashboardArticle} />
+
+          </Switch>
+          <Footer />
+        </div>
+      )
+    } else {
       return (
         <div className="App">
-
-          <div className="navAndCarousel">
-            <Navbar userInSession={this.state.loggedInUser}/>
-            <div className="weather-widget">
-              <h2 style={{textAlign: 'left', margin: '20px'}}>Ultimas Noticias:</h2>
-              <div id="openweathermap-widget-4" style={{paddingTop: "15px"}}></div>            
-            </div>
-          </div>
-
-          <Route exact path="/logout" render={() => (
-              <div>
-              <Carousel />
-              <hr/>
-              <NewsOptions />
-              <hr/>
-              <Dashboard />
-              </div>
-          )}/> 
-
+          <Navbar userInSession={this.state.loggedInUser} />
           <Switch>
-            <Route exact path="/" render={ () => (
+
+            <Route exact path="/" render={() => (
               <div>
                 <Carousel />
-                <hr/>
+              <hr/>
                 <NewsOptions />
-                <hr/>
+              <hr/>
                 <Dashboard />
               </div>
-            )} />
-            <Route  exact path="/:topic" component={NewsCard}/>
-            <Route  exact path="/:topic/:title" component={ArticleDetails}/>
-            <Route  path="/news/dashboard/:title" component={DashboardArticle} />
+            )}/> 
+            <Route path="/signup" render={() => <Signup getUser={this.getTheUser}/>}/>
+            <Route exact path="/:topic" component={NewsCard}/>
+            <Route exact path="/:topic/:title" component={ArticleDetails} />
+            <Route exact path="/news/dashboard/:title" component={DashboardArticle} />
+
           </Switch>
-        </div>        
-      )
-    }
-     else {
-      return (
-        <div className="App">
 
-        <div className="navAndCarousel">
-          <Navbar userInSession={this.state.loggedInUser}/>
-          <div className="weather-widget">
-            <h2 style={{textAlign: 'left', margin: '20px'}}>Ultimas Noticias:</h2>
-            <div id="openweathermap-widget-4" style={{paddingTop: "15px"}}></div>            
-          </div>
-        </div>
-
-
-        <Switch>
-          <Route exact path="/" render={ () => (
-            <div>
-              <Carousel />
-              <hr/>
-              <NewsOptions />
-              <hr/>
-              <Dashboard />
-              <hr/>
-            </div>
-          )} />          
-          <Route exact path='/login' render={() => <Login getUser={this.getTheUser}/>}/>
-          <Route exact path='/signup' render={() => <Signup getUser={this.getTheUser}/>} />
-          <Route  exact path="/:topic" component={NewsCard}/>
-          <Route  exact path="/:topic/:title" component={ArticleDetails}/>
-          <Route  path="/news/dashboard/:title" component={DashboardArticle} />
-        </Switch>
-
-
-        <Footer/>
+          <Footer />
+          
         </div>
       )
     }
@@ -131,3 +104,52 @@ class App extends Component {
 }
 
 export default App;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        // <div className="App">
+
+        //   <div className="navAndCarousel">
+        //     <Navbar/>
+        //     <div className="weather-widget">
+        //       <h2 style={{textAlign: 'left', margin: '20px'}}>Ultimas Noticias:</h2>
+        //       <div id="openweathermap-widget-4" style={{paddingTop: "15px"}}></div>            
+        //     </div>
+        //   </div>
+
+        //   <Route exact path="/" render={() => (
+        //       <div>
+        //       <Carousel />
+        //       <hr/>
+        //       <NewsOptions />
+        //       <hr/>
+        //       <Dashboard />
+        //       </div>
+        //   )}/> 
+
+        //   <Switch>
+        //     <Route exact path="/" render={ () => (
+        //       <div>
+        //         <Carousel />
+        //         <hr/>
+        //         <NewsOptions />
+        //         <hr/>
+        //         <Dashboard />
+        //       </div>
+        //     )} />
+        //     <Route  exact path="/:topic" component={NewsCard}/>
+        //     <Route  exact path="/:topic/:title" component={ArticleDetails}/>
+        //     <Route  path="/news/dashboard/:title" component={DashboardArticle} />
+        //   </Switch>
+        // </div>    
