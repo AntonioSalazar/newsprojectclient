@@ -11,7 +11,7 @@ import DashboardArticle from "./components/DashboardArticle"
 import ArticleDetails from './components/ArticleDetails';
 import Signup from './components/auth/Signup'
 import AuthService from './components/auth/auth-service';
-// import Login from './components/auth/Login'
+import Login from './components/auth/Login'
 
 
 class App extends Component {
@@ -64,11 +64,10 @@ class App extends Component {
                   <Dashboard />
                 </div>
               )}/> 
-
+  
               <Route exact path="/:topic" component={NewsCard}/>
               <Route exact path="/:topic/:title" component={ArticleDetails} />
               <Route exact path="/news/dashboard/:title" component={DashboardArticle} />
-
           </Switch>
           <Footer />
         </div>
@@ -88,7 +87,14 @@ class App extends Component {
                 <Dashboard />
               </div>
             )}/> 
-            <Route path="/signup" render={() => <Signup getUser={this.getTheUser}/>}/>
+            <Route path="/signup" render={() => 
+            <div>
+              <Signup getUser={this.getTheUser}/>
+            </div>
+            }/>
+
+
+            <Route path="/login" render={() => <Login getUser={this.getTheUser}/>} />
             <Route exact path="/:topic" component={NewsCard}/>
             <Route exact path="/:topic/:title" component={ArticleDetails} />
             <Route exact path="/news/dashboard/:title" component={DashboardArticle} />
@@ -96,7 +102,7 @@ class App extends Component {
           </Switch>
 
           <Footer />
-          
+
         </div>
       )
     }

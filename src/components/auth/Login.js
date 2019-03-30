@@ -28,14 +28,14 @@ class Login extends Component {
 
       render(){
         return(
-          <div>
-            <form onSubmit={this.handleFormSubmit}>
-              <label>Username:</label>
-              <input type="text" name="username" value={this.state.username} onChange={ e => this.handleChange(e)}/>
+          <div className="login-form">
+            <form onSubmit={this.handleFormSubmit} className="styles-login-form">
+              <label>Email:</label>
+              <input type="text" name="username" value={this.state.username} onChange={ e => this.handleChange(e)} placeholder="email"/>
               <label>Password:</label>
-              <textarea name="password" value={this.state.password} onChange={ e => this.handleChange(e)} />
+              <input type="password" name="password" value={this.state.password} onChange={ e => this.handleChange(e)}  placeholder="contrasena"/>
               
-              <input type="submit" value="Login" />
+              <input type="submit" value="Login" className="submit-btn" style={{marginTop: '10px'}}/>
             </form>
             <p>Don't have account? 
                 <Link to={"/signup"}> Signup</Link>
@@ -44,5 +44,4 @@ class Login extends Component {
         )
       }
 }
-
 export default Login;

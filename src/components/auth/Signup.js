@@ -55,7 +55,7 @@ class Signup extends Component {
         </form>
         <div style={{marginBottom: "30px"}}>
             <p>Already have an account?</p>
-            <Link to={"/"} >Login</Link>            
+            <Link to={"/login"} >Login</Link>            
         </div>
 
       </div>
