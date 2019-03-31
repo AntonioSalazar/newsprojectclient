@@ -1,6 +1,9 @@
 import React, {Component} from 'react';
 import AuthService from './auth-service';
 import {Link} from 'react-router-dom';
+import Swal from 'sweetalert2'
+
+ 
 
 class Login extends Component {
     constructor(props){
@@ -17,8 +20,20 @@ class Login extends Component {
         .then( response => {
             this.setState({ username: "", password: "" });
             this.props.getUser(response)
+            Swal.fire({
+              position: 'top-end',
+              type: 'success',
+              title: `Bienvenido ${response.username}`,
+              showConfirmButton: false,
+              timer: 1500
+            })
         })
-        .catch( error => console.log(error) )
+        .catch( error => Swal.fire(
+          'Algo salio mal',
+          'Verifica tus datos',
+          'question'
+        ) )
+  
       }
 
       handleChange = (event) => {  

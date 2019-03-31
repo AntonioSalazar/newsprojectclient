@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import logo from '../assets/logo.png'
 import AuthService from './auth/auth-service';
 
+
 class Navbar extends Component {
   constructor(props){
     super(props);
@@ -27,7 +28,7 @@ class Navbar extends Component {
     if (this.state.loggedInUser) {
       return(
         <div>
-          <nav className="navbar-styles" sticky="top" >
+          <nav className="navbar-styles" >
             <ul className="logo-signup-login">
               <li>
                 <Link to="/">
