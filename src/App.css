@@ -278,3 +278,11 @@ nav Link {
 .logout-btn{
   border-radius: 6px;
 }
+
+.newsCardLocal {
+  margin-left: 5%;
+  width: 50%;
+  position: absolute;
+  bottom: 150px;
+}
+

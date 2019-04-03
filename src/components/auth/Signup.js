@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import AuthService from "./auth-service";
-import { Link } from "react-router-dom"
+import { Link } from "react-router-dom";
+import Swal from "sweetalert2";
 
 class Signup extends Component {
   constructor(props){
@@ -27,8 +28,19 @@ class Signup extends Component {
         password: ""
       });
       this.props.getUser(response)
+      Swal.fire({
+        position: 'top-end',
+        type: 'success',
+        title: `Bienvenido ${response.username}`,
+        showConfirmButton: false,
+        timer: 1500
+      })
     })
-    .catch(err => console.log(err))
+    .catch(err => Swal.fire(
+      'Algo salio mal',
+      'Verifica tus datos',
+      'question'
+    ))
   }
 
   handleChange = e => {

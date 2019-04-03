@@ -12,8 +12,8 @@ import ArticleDetails from './components/ArticleDetails';
 import Signup from './components/auth/Signup'
 import AuthService from './components/auth/auth-service';
 import Login from './components/auth/Login'
-
-
+import LocalArticles from "./components/localArticles/LocalArticles"
+import IndependentArticleDetails from "./components/localArticles/IndependentArticleDetails"
 
 class App extends Component {
 
@@ -66,9 +66,9 @@ class App extends Component {
                 </div>
               )}/> 
   
-              <Route exact path="/:topic" component={NewsCard}/>
-              <Route exact path="/:topic/:title" component={ArticleDetails} />
-              <Route exact path="/news/dashboard/:title" component={DashboardArticle} />
+              <Route  exact path="/:topic" component={NewsCard}/>
+              <Route  exact path="/:topic/:title" component={ArticleDetails} />
+              <Route  exact path="/news/dashboard/:title" component={DashboardArticle} />
           </Switch>
           <Footer />
         </div>
@@ -94,14 +94,13 @@ class App extends Component {
             </div>
             }/>
 
-
             <Route path="/login" render={() => <Login getUser={this.getTheUser}/>} />
-            <Route exact path="/:topic" component={NewsCard}/>
+            <Route exact path="/news/:topic" component={NewsCard}/>
             <Route exact path="/:topic/:title" component={ArticleDetails} />
             <Route exact path="/news/dashboard/:title" component={DashboardArticle} />
-
-          </Switch>
-
+            <Route exact path="/localArticles" component={LocalArticles}/>
+            <Route exact path="/localArticles/:id" component={IndependentArticleDetails} />
+          </Switch> 
           <Footer />
 
         </div>
@@ -111,52 +110,3 @@ class App extends Component {
 }
 
 export default App;
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-        // <div className="App">
-
-        //   <div className="navAndCarousel">
-        //     <Navbar/>
-        //     <div className="weather-widget">
-        //       <h2 style={{textAlign: 'left', margin: '20px'}}>Ultimas Noticias:</h2>
-        //       <div id="openweathermap-widget-4" style={{paddingTop: "15px"}}></div>            
-        //     </div>
-        //   </div>
-
-        //   <Route exact path="/" render={() => (
-        //       <div>
-        //       <Carousel />
-        //       <hr/>
-        //       <NewsOptions />
-        //       <hr/>
-        //       <Dashboard />
-        //       </div>
-        //   )}/> 
-
-        //   <Switch>
-        //     <Route exact path="/" render={ () => (
-        //       <div>
-        //         <Carousel />
-        //         <hr/>
-        //         <NewsOptions />
-        //         <hr/>
-        //         <Dashboard />
-        //       </div>
-        //     )} />
-        //     <Route  exact path="/:topic" component={NewsCard}/>
-        //     <Route  exact path="/:topic/:title" component={ArticleDetails}/>
-        //     <Route  path="/news/dashboard/:title" component={DashboardArticle} />
-        //   </Switch>
-        // </div>    

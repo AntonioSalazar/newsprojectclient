@@ -1,6 +1,7 @@
 import React from 'react';
 import { Nav } from 'reactstrap';
 import { Breadcrumb, BreadcrumbItem } from 'reactstrap';
+import {Link} from "react-router-dom"
 
 class newsOptions extends React.Component {
   render() {
@@ -8,10 +9,10 @@ class newsOptions extends React.Component {
       <div >
         <Nav className='newsOptions'>
           <Breadcrumb tag="nav" listTag="div">
-            <BreadcrumbItem tag="a" href="/science">Ciencia</BreadcrumbItem>
-            <BreadcrumbItem tag="a" href="/technology">Tecnologia</BreadcrumbItem>
-            <BreadcrumbItem tag="a" href="/sports">Deportes</BreadcrumbItem>
-            <BreadcrumbItem active tag="span" href="/articles">Nota Roja</BreadcrumbItem>
+            <BreadcrumbItem tag="a" href="/news/science">Ciencia</BreadcrumbItem>
+            <BreadcrumbItem tag="a" href="/news/technology">Tecnologia</BreadcrumbItem>
+            <BreadcrumbItem tag="a" href="/news/sports">Deportes</BreadcrumbItem>
+            <BreadcrumbItem tag="a" href="/localArticles">Reportes Locales</BreadcrumbItem>
           </Breadcrumb>
         </Nav>
       </div>
