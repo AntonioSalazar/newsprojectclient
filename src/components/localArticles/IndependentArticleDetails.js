@@ -1,58 +1,61 @@
 import React, { Component } from "react";
-import {Link} from "react-router-dom";
-import { Card, CardImg, CardBody,
-  CardTitle, CardSubtitle, Button } from 'reactstrap';
+// import {Link} from "react-router-dom";
+// import { Card, CardImg, CardBody,
+//   CardTitle, CardSubtitle, Button } from 'reactstrap';
+// import NewsOptions from '../NewsOptions'
 
 
 class IndependentArticleDetails extends Component {
 
   state = {
-    individualArticle : []
-  }
-
-  getArticleById = () => {
-    const {params} = this.props.match
-    fetch(`http://localhost:5000/independent_articles/${params.id}`)
-    .then(singleArticle => {
-      singleArticle.json()
-      .then(data => {
-        const theArticle = data
-        this.setState({
-          individualArticle: theArticle
-        })
-      })
-      .catch(err => console.log(err))
-    })
+    independentAricles: []
   }
 
   componentDidMount(){
     this.getArticleById()
   }
 
+  getArticleById = () => {
+    const {params} = this.props.match
+    fetch(`http://localhost:5000/independent_articles/${params.id}`)
+    .then(responseFromAPI => {
+      responseFromAPI.json()
+      .then(jsonWithArticles => {
+        const articles = jsonWithArticles
+        this.setState({
+          independentAricles: articles
+        })
+      })
+    })
+    .catch(err => console.log(err))
+  }
+
+
+
   render() {
-    let article = this.state.individualArticle;
-    console.log(article);
+    console.log(this.state.independentAricles);
     return (
       <div>
-        <Card className="newsCard" style={{textAlign: 'left'}}>
+        {/* <NewsOptions /> */}
+        {/* <Card className='newsCard' style={{textAlign: 'left'}}>
           {
-            article.map((oneArticle, index) => {
+            this.state.independentAricles.map((oneArticle) => {
               return(
-                <div key={index} className="article-card">
-                  <CardImg top width="100%" src={oneArticle.imgPath} alt="Card image cap" />
-                  <CardBody style={{marginBottom: "20px"}}>
-                  <CardTitle><p className="title-news-card">{oneArticle.newsTitle}</p></CardTitle>
-                  <CardSubtitle><p>{oneArticle.newsDescription}</p></CardSubtitle>
-                  <Button style={{textDecoration: "none"}} color="danger">
-                    <Link to={`/`} style={{textDecoration: "none"}}>Regreso</Link>
-                  </Button> 
-                  </CardBody>                
-                </div>                
+                <div key={oneArticle._id}>
+                  <CardImg top width='100%' src={oneArticle.imgPath} alt='Card image cap'/>
+                  <CardBody style={{marginBottom: '20px'}}>
+                    <CardTitle><p className="title-news-card">{oneArticle.newsTitle}</p></CardTitle>
+                    <CardSubtitle><p>{oneArticle.newsDescription}</p></CardSubtitle>
+                    <Button style={{textDecoration: 'none'}} color="danger">
+                      <Link to="/">Regreso</Link>
+                    </Button>
+                  </CardBody>
+                </div>
               )
             })
           }
-          <br/>
-        </Card>
+        </Card> */}
+        <h1>hey, this is the individual article details page</h1>
       </div>
     )
   }

@@ -1,7 +1,8 @@
 import React, {Component} from "react";
 import { Card, CardImg, CardBody,
   CardTitle, CardSubtitle, Button } from 'reactstrap';
-import {Link} from "react-router-dom"
+import {Link} from "react-router-dom";
+// import NewsOptions from './NewsOptions'
 
 
 class ArticleDetails extends Component {
@@ -18,6 +19,7 @@ class ArticleDetails extends Component {
     const {params} = this.props.match
     fetch(`https://newsapi.org/v2/top-headlines?country=mx&category=${params.topic}&apiKey=8631d37e5233459cb78edcb073b174ff`)
     .then(responseFromAPI => {
+      // console.log(responseFromAPI);  --> Response {type: "cors", url: "https://newsapi.org/v2/top-headlines?country=mx&ca…echnology&apiKey=8631d37e5233459cb78edcb073b174ff", redirected: false, status: 200, ok: true, …}
       responseFromAPI.json()
       .then(jsonWithArticles => {
         const theArticles = jsonWithArticles.articles
@@ -35,6 +37,7 @@ class ArticleDetails extends Component {
   render(){
     return(
       <div>
+        {/* <NewsOptions /> */}
         <Card className="newsCard" style={{textAlign: 'left'}}>
           {
             this.state.theArticle.map((oneArticle, index) => {

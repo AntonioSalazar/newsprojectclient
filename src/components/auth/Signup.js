@@ -60,7 +60,7 @@ class Signup extends Component {
           <label htmlFor="email">Email</label>
           <input type="text" name="email" value={this.state.email} placeholder="Email" onChange={e => this.handleChange(e)} />
 
-          <label htmlFor="password">Password:</label>
+          <label htmlFor="password">Contrasena: (Minimo 8 caracteres)</label>
           <input type="password" name="password" value={this.state.password} placeholder="Contrasena" onChange={e => this.handleChange(e)}/>
 
           <input type="submit" value="Signup!" className="submit-btn" style={{marginTop: '10px'}}/>

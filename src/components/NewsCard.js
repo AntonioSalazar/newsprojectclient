@@ -6,7 +6,7 @@ import logo from "../assets/logo.png"
 import TweetsScience from "./TweetComponents/TweetsScience"
 import TweetsTech from "./TweetComponents/TweetsTech"
 import TweetsSports from "./TweetComponents/TweetSports"
-import NewsOptions from "./NewsOptions"
+// import NewsOptions from "./NewsOptions"
 
 class NewsCard extends Component {
   state = {
@@ -39,7 +39,7 @@ class NewsCard extends Component {
     const {params} = this.props.match
     return(
       <div>
-        <NewsOptions />
+        {/* <NewsOptions /> */}
         <div style={{marginTop: "20px", paddingBottom: "20px"}} className="card-and-tweets">
           <Card className="newsCard" style={{textAlign: 'left'}}>
             {

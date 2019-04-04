@@ -36,6 +36,7 @@ class LocalArticles extends Component {
                 <div key={index} className="article-card">
                   <CardImg top width="200px" src={eachArticle.imgPath} alt="Card image cap" />
                   <CardBody style={{marginBottom: "20px"}}>
+                  <h3>Reportado en: {eachArticle.location}</h3>
                   <CardTitle><p className="title-news-card">{eachArticle.newsTitle}</p></CardTitle>
                   <CardSubtitle><p>{eachArticle.newsDescription}</p></CardSubtitle>
                   <Button style={{textDecoration: "none"}} color="danger">

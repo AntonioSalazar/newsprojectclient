@@ -2,7 +2,8 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import logo from '../assets/logo.png'
 import AuthService from './auth/auth-service';
-
+import NewsOptions from './NewsOptions'
+import {Button} from 'reactstrap'
 
 class Navbar extends Component {
   constructor(props){
@@ -40,15 +41,17 @@ class Navbar extends Component {
               </li>
               <li>
                 <Link to="/logout">
-                  <button onClick={() => this.logoutUser()} className="logout-btn">Logout</button>
+                  {/* <button onClick={() => this.logoutUser()} className="logout-btn">Logout</button> */}
+                  <Button onClick={() => this.logoutUser()} color="primary">Logout</Button>{' '}
                 </Link>
               </li>
             </ul>
           </nav>
           <div className="weather-widget">
-              <h2 style={{textAlign: 'left', margin: '20px'}}>Bienvenido {this.state.loggedInUser.username}, puedes elegir una categoria:</h2>
-              <div id="openweathermap-widget-4" style={{paddingTop: "15px"}}></div>            
-            </div>
+            <h2 style={{textAlign: 'left', margin: '20px'}}>Bienvenido {this.state.loggedInUser.username}, puedes elegir una categoria:</h2>
+            <div id="openweathermap-widget-4" style={{paddingTop: "15px"}}></div>
+          </div>
+            <NewsOptions/>    
         </div>
       )
     } else {
@@ -62,10 +65,14 @@ class Navbar extends Component {
                 </Link>
               </li>
               <li>
-                <Link to='/login' style={{ textDecoration: 'none' }}>Login</Link>
+                <Link to='/login' style={{ textDecoration: 'none' }}>
+                  <Button color="primary">Login</Button>{' '}
+                </Link>
               </li>
               <li>
-                <Link to="/signup" style={{ textDecoration: 'none' }}>Signup</Link>
+                <Link to="/signup" style={{ textDecoration: 'none' }}>
+                  <Button color="primary">Signup</Button>{' '}
+                </Link>
               </li>
             </ul>
           </nav>  

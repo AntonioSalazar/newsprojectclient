@@ -66,9 +66,14 @@ class App extends Component {
                 </div>
               )}/> 
   
-              <Route  exact path="/:topic" component={NewsCard}/>
+              {/* <Route  exact path="/:topic" component={NewsCard}/>
               <Route  exact path="/:topic/:title" component={ArticleDetails} />
-              <Route  exact path="/news/dashboard/:title" component={DashboardArticle} />
+              <Route  exact path="/news/dashboard/:title" component={DashboardArticle} /> */}
+            <Route  path="/dashboard-article/:title" component={DashboardArticle} />
+            <Route  path="/news/:topic" component={NewsCard}/>
+            <Route  exact path="/localArticles" component={LocalArticles}/>
+            <Route  path="/localArticles/:id" component={IndependentArticleDetails} />
+            <Route  path="/:topic/:title" component={ArticleDetails} />
           </Switch>
           <Footer />
         </div>
@@ -94,12 +99,12 @@ class App extends Component {
             </div>
             }/>
 
-            <Route path="/login" render={() => <Login getUser={this.getTheUser}/>} />
-            <Route exact path="/news/:topic" component={NewsCard}/>
-            <Route exact path="/:topic/:title" component={ArticleDetails} />
-            <Route exact path="/news/dashboard/:title" component={DashboardArticle} />
-            <Route exact path="/localArticles" component={LocalArticles}/>
-            <Route exact path="/localArticles/:id" component={IndependentArticleDetails} />
+            <Route  path="/login" render={() => <Login getUser={this.getTheUser}/>} />
+            <Route  path="/dashboard-article/:title" component={DashboardArticle} />
+            <Route  path="/news/:topic" component={NewsCard}/>
+            <Route  exact path="/localArticles" component={LocalArticles}/>
+            <Route  path="/localArticles/:id" component={IndependentArticleDetails} />
+            <Route  path="/:topic/:title" component={ArticleDetails} />
           </Switch> 
           <Footer />
 

@@ -1,7 +1,6 @@
 import React from 'react';
 import { Nav } from 'reactstrap';
 import { Breadcrumb, BreadcrumbItem } from 'reactstrap';
-import {Link} from "react-router-dom"
 
 class newsOptions extends React.Component {
   render() {
