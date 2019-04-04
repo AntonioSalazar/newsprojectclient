@@ -46,6 +46,7 @@ class DashboardArticle extends Component {
                       <CardBody style={{marginBottom: "20px"}}>
                       <CardTitle><p className="title-news-card">{oneArticle.title}</p></CardTitle>
                       <CardSubtitle><p>{oneArticle.description}</p></CardSubtitle>
+                      <Button color="primary">Ver noticia completa</Button>{' '}
                       <Link to={`/`} style={{textDecoration: "none"}}>
                         <Button color="primary">Regresar</Button>{' '}
                       </Link>

@@ -40,7 +40,7 @@ class LocalArticles extends Component {
                   <CardTitle><p className="title-news-card">{eachArticle.newsTitle}</p></CardTitle>
                   <CardSubtitle><p>{eachArticle.newsDescription}</p></CardSubtitle>
                   <Link to={`/localArticles/${eachArticle._id}`} style={{textDecoration: "none"}}>
-                    <Button color="primary">Articulo Completo</Button>{' '}
+                    <Button color="primary">Ver articulo</Button>{' '}
                   </Link>
                   </CardBody>                
                 </div> 

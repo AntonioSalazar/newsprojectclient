@@ -54,7 +54,7 @@ class NewsCard extends Component {
                     <CardTitle><p className="title-news-card">{oneArticle.title}</p></CardTitle>
                     <CardSubtitle><p>{oneArticle.description}</p></CardSubtitle>
                     <Link to={`/${params.topic}/${oneArticle.title}`} style={{textDecoration: "none"}}>
-                      <Button color="primary">Articulo Completo</Button>{' '}
+                      <Button color="primary">Ver articulo</Button>{' '}
                     </Link>
                     </CardBody>                
                   </div> 
