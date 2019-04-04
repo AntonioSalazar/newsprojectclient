@@ -39,9 +39,9 @@ class LocalArticles extends Component {
                   <h3>Reportado en: {eachArticle.location}</h3>
                   <CardTitle><p className="title-news-card">{eachArticle.newsTitle}</p></CardTitle>
                   <CardSubtitle><p>{eachArticle.newsDescription}</p></CardSubtitle>
-                  <Button style={{textDecoration: "none"}} color="danger">
-                    <Link to={`/localArticles/${eachArticle._id}`} style={{textDecoration: "none"}}>Articulo Completo</Link>
-                  </Button> 
+                  <Link to={`/localArticles/${eachArticle._id}`} style={{textDecoration: "none"}}>
+                    <Button color="primary">Articulo Completo</Button>{' '}
+                  </Link>
                   </CardBody>                
                 </div> 
               )
