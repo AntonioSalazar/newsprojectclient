@@ -1,8 +1,7 @@
 import React, { Component } from "react";
-// import {Link} from "react-router-dom";
-// import { Card, CardImg, CardBody,
-//   CardTitle, CardSubtitle, Button } from 'reactstrap';
-// import NewsOptions from '../NewsOptions'
+import {Link} from "react-router-dom";
+import { Card, CardImg, CardBody,
+  CardTitle, CardSubtitle, Button } from 'reactstrap';
 
 
 class IndependentArticleDetails extends Component {
@@ -34,28 +33,23 @@ class IndependentArticleDetails extends Component {
 
   render() {
     console.log(this.state.independentAricles);
+    const {imgPath, newsTitle, newsContent, location, author} = this.state.independentAricles
     return (
       <div>
-        {/* <NewsOptions /> */}
-        {/* <Card className='newsCard' style={{textAlign: 'left'}}>
-          {
-            this.state.independentAricles.map((oneArticle) => {
-              return(
-                <div key={oneArticle._id}>
-                  <CardImg top width='100%' src={oneArticle.imgPath} alt='Card image cap'/>
+        <Card className='newsCard' style={{textAlign: 'left'}}>
+                <div>
+                  <CardImg top width='100%' src={imgPath} alt='Card image cap'/>
                   <CardBody style={{marginBottom: '20px'}}>
-                    <CardTitle><p className="title-news-card">{oneArticle.newsTitle}</p></CardTitle>
-                    <CardSubtitle><p>{oneArticle.newsDescription}</p></CardSubtitle>
+                  <h3>Reportado en: {location}</h3>
+                  <h5>Autor: {author}</h5>
+                    <CardTitle><p className="title-news-card">{newsTitle}</p></CardTitle>
+                    <CardSubtitle><p>{newsContent}</p></CardSubtitle>
                     <Button style={{textDecoration: 'none'}} color="danger">
-                      <Link to="/">Regreso</Link>
+                      <Link to="/localArticles">Regreso</Link>
                     </Button>
                   </CardBody>
                 </div>
-              )
-            })
-          }
-        </Card> */}
-        <h1>hey, this is the individual article details page</h1>
+        </Card>
       </div>
     )
   }
