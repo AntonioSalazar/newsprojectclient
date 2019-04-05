@@ -35,6 +35,7 @@ class ArticleDetails extends Component {
   }
 
   render(){
+    const {params} = this.props.match
     return(
       <div>
         {/* <NewsOptions /> */}
@@ -47,7 +48,9 @@ class ArticleDetails extends Component {
                   <CardBody style={{marginBottom: "20px"}}>
                   <CardTitle><p className="title-news-card">{oneArticle.title}</p></CardTitle>
                   <CardSubtitle><p>{oneArticle.description}</p></CardSubtitle>
-                  <Link to={`/`} style={{textDecoration: "none"}}>
+              
+                  <Button color="primary">Ver noticia completa</Button>{' '}
+                  <Link to={`/news/${params.topic}`} style={{textDecoration: "none"}}>
                     <Button color="primary">Regresar</Button>{' '}
                   </Link>
                   </CardBody>                

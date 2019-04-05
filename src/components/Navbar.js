@@ -41,7 +41,6 @@ class Navbar extends Component {
               </li>
               <li>
                 <Link to="/logout">
-                  {/* <button onClick={() => this.logoutUser()} className="logout-btn">Logout</button> */}
                   <Button onClick={() => this.logoutUser()} color="primary">Logout</Button>{' '}
                 </Link>
               </li>
