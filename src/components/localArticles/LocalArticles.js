@@ -2,6 +2,7 @@ import React, {Component} from "react";
 import { Card, CardImg, CardBody,
   CardTitle, CardSubtitle, Button } from 'reactstrap';
 import {Link} from "react-router-dom";
+import TweetsLocal from '../TweetComponents/TweetsLocal'
 
 class LocalArticles extends Component {
 
@@ -28,7 +29,7 @@ class LocalArticles extends Component {
 
   render(){
     return(
-      <div>
+      <div className="articles-tweets">
         <Card className="newsCard" style={{textAlign: 'left'}}>
           {
             this.state.localArticles.map((eachArticle, index ) => {
@@ -49,6 +50,7 @@ class LocalArticles extends Component {
           }
           <br/>
         </Card>  
+        <TweetsLocal />
       </div>
     )
   }

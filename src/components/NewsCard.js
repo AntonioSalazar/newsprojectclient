@@ -39,7 +39,6 @@ class NewsCard extends Component {
     const {params} = this.props.match
     return(
       <div>
-        {/* <NewsOptions /> */}
         <div style={{marginTop: "20px", paddingBottom: "20px"}} className="card-and-tweets">
           <Card className="newsCard" style={{textAlign: 'left'}}>
             {

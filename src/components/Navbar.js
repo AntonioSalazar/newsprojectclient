@@ -79,6 +79,7 @@ class Navbar extends Component {
               <h2 style={{textAlign: 'left', margin: '20px'}}>Las ultimas noticias todo el tiempo:</h2>
               <div id="openweathermap-widget-4" style={{paddingTop: "15px"}}></div>            
             </div>
+            <NewsOptions />
         </div>
       )      
     }

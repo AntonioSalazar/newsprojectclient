@@ -122,6 +122,12 @@
     display: flex;
     flex-direction: column;
   }
+
+  .articles-tweets{
+    display: flex;
+    flex-direction: column;
+  }
+  
 }
 
 .title-news-card {
@@ -284,5 +290,11 @@ nav Link {
   width: 50%;
   position: absolute;
   bottom: 150px;
+}
+
+.articles-tweets{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
 }
 
