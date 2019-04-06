@@ -32,7 +32,6 @@ class IndependentArticleDetails extends Component {
 
 
   render() {
-    console.log(this.state.independentAricles);
     const {imgPath, newsTitle, newsContent, location, author} = this.state.independentAricles
     return (
       <div>

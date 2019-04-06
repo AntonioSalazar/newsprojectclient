@@ -29,28 +29,31 @@ class LocalArticles extends Component {
 
   render(){
     return(
-      <div className="articles-tweets">
-        <Card className="newsCard" style={{textAlign: 'left'}}>
-          {
-            this.state.localArticles.map((eachArticle, index ) => {
-              return(
-                <div key={index} className="article-card">
-                  <CardImg top width="200px" src={eachArticle.imgPath} alt="Card image cap" />
-                  <CardBody style={{marginBottom: "20px"}}>
-                  <h3>Reportado en: {eachArticle.location}</h3>
-                  <CardTitle><p className="title-news-card">{eachArticle.newsTitle}</p></CardTitle>
-                  <CardSubtitle><p>{eachArticle.newsDescription}</p></CardSubtitle>
-                  <Link to={`/localArticles/${eachArticle._id}`} style={{textDecoration: "none"}}>
-                    <Button color="primary">Ver articulo</Button>{' '}
-                  </Link>
-                  </CardBody>                
-                </div> 
-              )
-            })
-          }
-          <br/>
-        </Card>  
-        <TweetsLocal />
+      <div>
+        <p>te gustaria reportar algun evento de tu localidad? Hazlo <Link to="/add-article">aqui</Link></p>
+        <div className="articles-tweets">
+          <Card className="newsCard" style={{textAlign: 'left'}}>
+            {
+              this.state.localArticles.map((eachArticle, index ) => {
+                return(
+                  <div key={index} className="article-card">
+                    <CardImg top width="200px" src={eachArticle.imgPath} alt="Card image cap" />
+                    <CardBody style={{marginBottom: "20px"}}>
+                    <h3>Reportado en: {eachArticle.location}</h3>
+                    <CardTitle><p className="title-news-card">{eachArticle.newsTitle}</p></CardTitle>
+                    <CardSubtitle><p>{eachArticle.newsDescription}</p></CardSubtitle>
+                    <Link to={`/localArticles/${eachArticle._id}`} style={{textDecoration: "none"}}>
+                      <Button color="primary">Ver articulo</Button>{' '}
+                    </Link>
+                    </CardBody>                
+                  </div> 
+                )
+              })
+            }
+            <br/>
+          </Card>  
+          <TweetsLocal />
+        </div>
       </div>
     )
   }

@@ -14,6 +14,7 @@ import AuthService from './components/auth/auth-service';
 import Login from './components/auth/Login'
 import LocalArticles from "./components/localArticles/LocalArticles"
 import IndependentArticleDetails from "./components/localArticles/IndependentArticleDetails"
+import AddArticle from './components/localArticles/AddArticle'
 
 class App extends Component {
 
@@ -65,14 +66,11 @@ class App extends Component {
                   <Dashboard />
                 </div>
               )}/> 
-  
-              {/* <Route  exact path="/:topic" component={NewsCard}/>
-              <Route  exact path="/:topic/:title" component={ArticleDetails} />
-              <Route  exact path="/news/dashboard/:title" component={DashboardArticle} /> */}
             <Route  path="/dashboard-article/:title" component={DashboardArticle} />
             <Route  path="/news/:topic" component={NewsCard}/>
             <Route  exact path="/localArticles" component={LocalArticles}/>
             <Route  path="/localArticles/:id" component={IndependentArticleDetails} />
+            <Route  path="/add-article" component={AddArticle}/>
             <Route  path="/:topic/:title" component={ArticleDetails} />
           </Switch>
           <Footer />
@@ -104,6 +102,7 @@ class App extends Component {
             <Route  path="/news/:topic" component={NewsCard}/>
             <Route  exact path="/localArticles" component={LocalArticles}/>
             <Route  path="/localArticles/:id" component={IndependentArticleDetails} />
+            <Route  path="/add-article" component={AddArticle}/>
             <Route  path="/:topic/:title" component={ArticleDetails} />
           </Switch> 
           <Footer />
