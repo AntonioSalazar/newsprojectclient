@@ -12,52 +12,6 @@ class AddArticle extends Component {
         selectedFile: null
     }
 
-    handleFormSubmit = e => {
-        e.preventDefault()
-        const newsTitle = this.state.newsTitle;
-        const newsDescription = this.state.newsDescription;
-        const newsContent = this.state.newsContent;
-        const location = this.state.location;
-        const author = this.state.author;
-        
-        const data = {
-            newsTitle: newsTitle,
-            newsDescription: newsDescription,
-            newsContent: newsContent,
-            location: location,
-            author: author
-        }
-
-        const options = {
-            method: 'POST',
-            headers: {
-                "Content-Type": "application/json"
-            },
-            body: JSON.stringify(data),
-            credentials: "include"
-        }
-
-        fetch("http://localhost:5000/add_article", options)
-        .then(() => {
-            this.setState({
-                newsTitle: '',
-                newsDescription: '',
-                newsContent: '',
-                location: '',
-                author: ''
-            })
-        })
-        .catch(err => console.log(err))
-    }
-  
-
-    handleChange = e => {
-        const {name, value} = e.target
-        this.setState({
-            [name]: value
-        })
-    }
-
     fileSelectHandler = event => {
         this.setState({
             selectedFile: event.target.files[0]
@@ -67,18 +21,63 @@ class AddArticle extends Component {
     fileUploadHandler = () => {
         const fd = new FormData();
         fd.append('photo', this.state.selectedFile, this.state.selectedFile.name)
-        axios.post('http://localhost:5000/add_article', fd, {
+        return (axios.post('http://localhost:5000/add_photo', fd, {
             headers: {
                 'Content-Type': 'multipart/form-data'
             }
+        }))
+    }
+
+    handleFormSubmit = e => {
+        e.preventDefault()
+        const newsTitle = this.state.newsTitle;
+        const newsDescription = this.state.newsDescription;
+        const newsContent = this.state.newsContent;
+        const location = this.state.location;
+        const author = this.state.author;
+        this.fileUploadHandler().then(res => {
+            console.log(res.data);
+            const data = {
+                newsTitle: newsTitle,
+                newsDescription: newsDescription,
+                newsContent: newsContent,
+                location: location,
+                author: author,
+                imgPath: res.data.imgPath,
+                imgName: res.data.imgName
+            }
+            
+            const options = {
+                method: 'POST',
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify(data),
+                credentials: "include"
+            }
+            fetch("http://localhost:5000/add_article", options)
+            .then(() => {
+                this.setState({
+                    newsTitle: '',
+                    newsDescription: '',
+                    newsContent: '',
+                    location: '',
+                    author: ''
+                })
+            })
+            .catch(err => console.log(err))            
         })
-        .then(res => {
-            console.log(res)
+
+    }
+  
+    handleChange = e => {
+        const {name, value} = e.target
+        this.setState({
+            [name]: value
         })
     }
 
     render(){
-        console.log(this.state.selectedFile);
         return(
             <div>
                 <form onSubmit={this.handleFormSubmit} className="signup-form">
@@ -95,10 +94,10 @@ class AddArticle extends Component {
                     <label htmlFor="location">Ubicacion</label>
                     <input type="text" value={this.state.location} name="location" placeholder="Donde ocurrio" onChange={e => this.handleChange(e)}/>
                         <hr/>
-                    <label htmlFor="imgPath">Imagen</label>
-                    <input type="file"  onChange={this.fileSelectHandler} required/>
+                    <label htmlFor="photo">Imagen</label>
+                    <input type="file" name="photo"  onChange={this.fileSelectHandler} required/>
 
-                    <input type="submit" value="Enviar" className="submit-btn" onClick={this.fileUploadHandler} />
+                    <input type="submit" value="Enviar" className="submit-btn"  />
 
                 </form>
             </div>
