@@ -59,7 +59,6 @@ class AddArticle extends Component {
     }
 
     fileSelectHandler = event => {
-        console.log(event.target.files[0]);
         this.setState({
             selectedFile: event.target.files[0]
         })
@@ -68,13 +67,18 @@ class AddArticle extends Component {
     fileUploadHandler = () => {
         const fd = new FormData();
         fd.append('photo', this.state.selectedFile, this.state.selectedFile.name)
-        axios.post('http://localhost:5000/add_article', fd)
+        axios.post('http://localhost:5000/add_article', fd, {
+            headers: {
+                'Content-Type': 'multipart/form-data'
+            }
+        })
         .then(res => {
             console.log(res)
         })
     }
 
     render(){
+        console.log(this.state.selectedFile);
         return(
             <div>
                 <form onSubmit={this.handleFormSubmit} className="signup-form">
