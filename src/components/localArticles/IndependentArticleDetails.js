@@ -43,9 +43,9 @@ class IndependentArticleDetails extends Component {
                   <h5>Autor: {author}</h5>
                     <CardTitle><p className="title-news-card">{newsTitle}</p></CardTitle>
                     <CardSubtitle><p>{newsContent}</p></CardSubtitle>
-                    <Button style={{textDecoration: 'none'}} color="danger">
-                      <Link to="/localArticles">Regreso</Link>
-                    </Button>
+                      <Link to="/localArticles">
+                        <Button color="primary">Regresar</Button>{' '}
+                      </Link>
                   </CardBody>
                 </div>
         </Card>

@@ -43,10 +43,6 @@
   justify-content: space-around;
 }
 
-.carousel-item > img { 
-  width: 70%;
-}
-
 .newsOptions{
   margin-left: 60px;
   margin-bottom: 60px;
@@ -70,21 +66,17 @@
 
 
 .custom-carousel-item img {
-  -webkit-filter: brightness(50%);
-  filter: brightness(50%);
+  -webkit-filter: brightness(40%);
+  filter: brightness(40%);
   height: 100%;
-  width: 100%;
+  width: 300px;
 }
 
 .div-img-carousel{
-  height: 500px;
-  background: green;
+  height: 450px;
+  background: rgb(95, 100, 95);
 }
 
-#carousel-img{
-  background-size: cover;
-  background-repeat: no-repeat;
-}
 
 .text-carousel{
   background: rgba(0, 0, 0, 0.527);
