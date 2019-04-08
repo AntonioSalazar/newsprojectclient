@@ -21,7 +21,7 @@ class AddArticle extends Component {
     fileUploadHandler = () => {
         const fd = new FormData();
         fd.append('photo', this.state.selectedFile, this.state.selectedFile.name)
-        return (axios.post('http://localhost:5000/add_photo', fd, {
+        return (axios.post('https://newsproject2019.herokuapp.com/add_photo', fd, {
             headers: {
                 'Content-Type': 'multipart/form-data'
             }
@@ -36,7 +36,6 @@ class AddArticle extends Component {
         const location = this.state.location;
         const author = this.state.author;
         this.fileUploadHandler().then(res => {
-            console.log(res.data);
             const data = {
                 newsTitle: newsTitle,
                 newsDescription: newsDescription,
@@ -55,7 +54,7 @@ class AddArticle extends Component {
                 body: JSON.stringify(data),
                 credentials: "include"
             }
-            fetch("http://localhost:5000/add_article", options)
+            fetch("https://newsproject2019.herokuapp.com/add_article", options)
             .then(() => {
                 this.setState({
                     newsTitle: '',

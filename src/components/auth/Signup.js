@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import AuthService from "./auth-service";
-import { Link } from "react-router-dom";
+import { Link, Redirect } from "react-router-dom";
 import Swal from "sweetalert2";
 
 class Signup extends Component {
@@ -9,7 +9,8 @@ class Signup extends Component {
     this.state = { 
       username: '', 
       email: '',
-      password: '' 
+      password: '' ,
+      redirect: false
     };
     this.service = new AuthService();
   }
@@ -25,7 +26,8 @@ class Signup extends Component {
       this.setState({
         username: "",
         email: "",
-        password: ""
+        password: "",
+        redirect: true
       });
       this.props.getUser(response)
       Swal.fire({
@@ -51,27 +53,31 @@ class Signup extends Component {
   }
 
   render(){
-    return(
-      <div>
-        <form onSubmit={this.handleFormSubmit} className="signup-form">
-          <label htmlFor="username">Nombre de Usuario:</label>
-          <input type="text" name="username" value={this.state.username} placeholder="Nombre de usuario..." onChange={e => this.handleChange(e)}/>
+    if (this.state.redirect) {
+      return <Redirect to="/" />
+    } else {
+      return(
+        <div>
+          <form onSubmit={this.handleFormSubmit} className="signup-form">
+            <label htmlFor="username">Nombre de Usuario:</label>
+            <input type="text" name="username" value={this.state.username} placeholder="Nombre de usuario..." onChange={e => this.handleChange(e)}/>
 
-          <label htmlFor="email">Email</label>
-          <input type="text" name="email" value={this.state.email} placeholder="Email" onChange={e => this.handleChange(e)} />
+            <label htmlFor="email">Email</label>
+            <input type="text" name="email" value={this.state.email} placeholder="Email" onChange={e => this.handleChange(e)} />
 
-          <label htmlFor="password">Contrasena: (Minimo 8 caracteres)</label>
-          <input type="password" name="password" value={this.state.password} placeholder="Contrasena" onChange={e => this.handleChange(e)}/>
+            <label htmlFor="password">Contrasena: (Minimo 8 caracteres)</label>
+            <input type="password" name="password" value={this.state.password} placeholder="Contrasena" onChange={e => this.handleChange(e)}/>
 
-          <input type="submit" value="Signup!" className="submit-btn" style={{marginTop: '10px'}}/>
-        </form>
-        <div style={{marginBottom: "30px"}}>
-            <p>Ya tienes cuenta?</p>
-            <Link to={"/login"} >Login</Link>            
+            <input type="submit" value="Signup!" className="submit-btn" style={{marginTop: '10px'}}/>
+          </form>
+          <div style={{marginBottom: "30px"}}>
+              <p>Ya tienes cuenta?</p>
+              <Link to={"/login"} >Login</Link>            
+          </div>
+
         </div>
-
-      </div>
-    )
+      )      
+    }
   }
 }
 

@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import AuthService from './auth-service';
-import {Link} from 'react-router-dom';
+import {Link, Redirect} from 'react-router-dom';
 import Swal from 'sweetalert2'
 
  
@@ -8,7 +8,11 @@ import Swal from 'sweetalert2'
 class Login extends Component {
     constructor(props){
       super(props);
-      this.state = { username: '', password: '' };
+      this.state = { 
+        username: '', 
+        password: '',
+        redirect: false 
+      };
       this.service = new AuthService();
     }
 
@@ -18,7 +22,7 @@ class Login extends Component {
         const password = this.state.password;
         this.service.login(username, password)
         .then( response => {
-            this.setState({ username: "", password: "" });
+            this.setState({ username: "", password: "", redirect: true});
             this.props.getUser(response)
             Swal.fire({
               position: 'top-end',
@@ -41,22 +45,29 @@ class Login extends Component {
         this.setState({[name]: value});
       }
 
+
+
+
       render(){
-        return(
-          <div className="login-form">
-            <form onSubmit={this.handleFormSubmit} className="styles-login-form">
-              <label>Email:</label>
-              <input type="text" name="username" value={this.state.username} onChange={ e => this.handleChange(e)} placeholder="Email"/>
-              <label>Password:</label>
-              <input type="password" name="password" value={this.state.password} onChange={ e => this.handleChange(e)}  placeholder="Contrasena"/>
-              
-              <input type="submit" value="Login" className="submit-btn" style={{marginTop: '10px'}}/>
-            </form>
-            <p>No tienes cuenta? 
-                <Link to={"/signup"}> Signup</Link>
-            </p>
-          </div>
-        )
+        if (this.state.redirect) {
+          return <Redirect to  ="/" />
+        } else {
+          return(
+            <div className="login-form">
+              <form onSubmit={this.handleFormSubmit} className="styles-login-form">
+                <label>Email:</label>
+                <input type="text" name="username" value={this.state.username} onChange={ e => this.handleChange(e)} placeholder="Email"/>
+                <label>Password:</label>
+                <input type="password" name="password" value={this.state.password} onChange={ e => this.handleChange(e)}  placeholder="Contrasena"/>
+                <input type="submit" value="Login" className="submit-btn" style={{marginTop: '10px'}}/>
+              </form>
+              <p>No tienes cuenta? 
+                  <Link to={"/signup"}> Signup</Link>
+              </p>
+            </div>
+          )          
+        }
+
       }
 }
 export default Login;

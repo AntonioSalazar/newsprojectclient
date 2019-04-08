@@ -40,7 +40,7 @@ class Navbar extends Component {
                 Hola {this.state.loggedInUser.username} !
               </li>
               <li>
-                <Link to="/logout">
+                <Link to="/">
                   <Button onClick={() => this.logoutUser()} color="primary">Logout</Button>{' '}
                 </Link>
               </li>

@@ -11,7 +11,7 @@ class LocalArticles extends Component {
   }
 
   getArticlesFromAPI = () => {
-    fetch("http://localhost:5000/independent_articles")
+    fetch("https://newsproject2019.herokuapp.com/independent_articles")
     .then(newFromAPI => {
       newFromAPI.json()
       .then(data => {
