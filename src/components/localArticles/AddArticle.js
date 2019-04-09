@@ -1,5 +1,6 @@
 import React, {Component} from 'react'
 import axios from 'axios'
+import {Redirect} from 'react-router-dom'
 
 class AddArticle extends Component {
 
@@ -9,7 +10,8 @@ class AddArticle extends Component {
         newsContent: '',
         location: '',
         author: '',
-        selectedFile: null
+        selectedFile: null,
+        redirect: false
     }
 
     fileSelectHandler = event => {
@@ -21,7 +23,7 @@ class AddArticle extends Component {
     fileUploadHandler = () => {
         const fd = new FormData();
         fd.append('photo', this.state.selectedFile, this.state.selectedFile.name)
-        return (axios.post('https://newsproject2019.herokuapp.com/add_photo', fd, {
+        return (axios.post('http://localhost:5000/add_photo', fd, {
             headers: {
                 'Content-Type': 'multipart/form-data'
             }
@@ -54,14 +56,15 @@ class AddArticle extends Component {
                 body: JSON.stringify(data),
                 credentials: "include"
             }
-            fetch("https://newsproject2019.herokuapp.com/add_article", options)
+            fetch("http://localhost:5000/add_article", options)
             .then(() => {
                 this.setState({
                     newsTitle: '',
                     newsDescription: '',
                     newsContent: '',
                     location: '',
-                    author: ''
+                    author: '',
+                    redirect: true
                 })
             })
             .catch(err => console.log(err))            
@@ -77,30 +80,35 @@ class AddArticle extends Component {
     }
 
     render(){
-        return(
-            <div>
-                <form onSubmit={this.handleFormSubmit} className="signup-form">
+        if (this.state.redirect) {
+           return  <Redirect to="/localArticles"/>
+        } else {
+            return(
+                <div>
+                    <form onSubmit={this.handleFormSubmit} className="signup-form">
 
-                    <label htmlFor="newsTitle">Titulo de la noticia:</label>
-                    <input type="text" value={this.state.newsTitle} name="newsTitle" placeholder="Titulo de la noticia" onChange={e => this.handleChange(e)}/>
-                        <hr/>
-                    <label htmlFor="newsDescription">Descripcion de la noticia:</label>
-                    <input type="text" value={this.state.newsDescription} name="newsDescription" placeholder="Cuentanos en 10 palabras sobre tu reporte" onChange={e => this.handleChange(e)}/>
-                        <hr/>
-                    <label htmlFor="newsContent">Reporte completo de la noticia:</label>
-                    <input type="text" value={this.state.newsContent} name="newsContent" placeholder="Cuentanos todo sobre tu reporte" onChange={e => this.handleChange(e)} required/>
-                        <hr/>
-                    <label htmlFor="location">Ubicacion</label>
-                    <input type="text" value={this.state.location} name="location" placeholder="Donde ocurrio" onChange={e => this.handleChange(e)}/>
-                        <hr/>
-                    <label htmlFor="photo">Imagen</label>
-                    <input type="file" name="photo"  onChange={this.fileSelectHandler} required/>
+                        <label htmlFor="newsTitle">Titulo de la noticia:</label>
+                        <input type="text" value={this.state.newsTitle} name="newsTitle" placeholder="Titulo de la noticia" onChange={e => this.handleChange(e)}/>
+                            <hr/>
+                        <label htmlFor="newsDescription">Descripcion de la noticia:</label>
+                        <input type="text" value={this.state.newsDescription} name="newsDescription" placeholder="Cuentanos en 10 palabras sobre tu reporte" onChange={e => this.handleChange(e)}/>
+                            <hr/>
+                        <label htmlFor="newsContent">Reporte completo de la noticia:</label>
+                        <input type="text" value={this.state.newsContent} name="newsContent" placeholder="Cuentanos todo sobre tu reporte" onChange={e => this.handleChange(e)} required/>
+                            <hr/>
+                        <label htmlFor="location">Ubicacion</label>
+                        <input type="text" value={this.state.location} name="location" placeholder="Donde ocurrio" onChange={e => this.handleChange(e)}/>
+                            <hr/>
+                        <label htmlFor="photo">Imagen</label>
+                        <input type="file" name="photo"  onChange={this.fileSelectHandler} required/>
 
-                    <input type="submit" value="Enviar" className="submit-btn"  />
+                        <input type="submit" value="Enviar" className="submit-btn"  />
 
-                </form>
-            </div>
-        )
+                    </form>
+                </div>
+            )            
+        }
+
     }
 }
 

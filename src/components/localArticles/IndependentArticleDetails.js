@@ -16,7 +16,7 @@ class IndependentArticleDetails extends Component {
 
   getArticleById = () => {
     const {params} = this.props.match
-    fetch(`https://newsproject2019.herokuapp.com/independent_articles/${params.id}`)
+    fetch(`http://localhost:5000/${params.id}`)
     .then(responseFromAPI => {
       responseFromAPI.json()
       .then(jsonWithArticles => {
