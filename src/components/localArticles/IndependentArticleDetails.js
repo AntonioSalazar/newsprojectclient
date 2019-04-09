@@ -16,7 +16,7 @@ class IndependentArticleDetails extends Component {
 
   getArticleById = () => {
     const {params} = this.props.match
-    fetch(`http://localhost:5000/${params.id}`)
+    fetch(`http://localhost:5000/independent_articles/${params.id}`)
     .then(responseFromAPI => {
       responseFromAPI.json()
       .then(jsonWithArticles => {
@@ -43,9 +43,9 @@ class IndependentArticleDetails extends Component {
                   <h5>Autor: {author}</h5>
                     <CardTitle><p className="title-news-card">{newsTitle}</p></CardTitle>
                     <CardSubtitle><p>{newsContent}</p></CardSubtitle>
-                      <Link to="/localArticles">
-                        <Button color="primary">Regresar</Button>{' '}
-                      </Link>
+                    <Link to="/localArticles">
+                      <Button color="primary">Regresar</Button>{' '}
+                    </Link>
                   </CardBody>
                 </div>
         </Card>
