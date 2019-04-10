@@ -16,7 +16,8 @@ class IndependentArticleDetails extends Component {
 
   getArticleById = () => {
     const {params} = this.props.match
-    fetch(`http://localhost:5000/independent_articles/${params.id}`)
+    // fetch(`http://localhost:5000/independent_articles/${params.id}`)
+    fetch(`${process.env.REACT_APP_API_URL}/independent_articles/${params.id}`)
     .then(responseFromAPI => {
       responseFromAPI.json()
       .then(jsonWithArticles => {

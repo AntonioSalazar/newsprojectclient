@@ -11,7 +11,8 @@ class LocalArticles extends Component {
   }
 
   getArticlesFromAPI = () => {
-    fetch("http://localhost:5000/independent_articles")
+    // fetch("http://localhost:5000/independent_articles")
+    fetch(`${process.env.REACT_APP_API_URL}/independent_articles`)
     .then(newFromAPI => {
       newFromAPI.json()
       .then(data => {
@@ -37,7 +38,7 @@ class LocalArticles extends Component {
               this.state.localArticles.map((eachArticle, index ) => {
                 return(
                   <div key={index} className="article-card">
-                    <CardImg top width="200px" src={eachArticle.imgPath} alt="Card image cap" />
+                    <CardImg top width="200px" style={{height: "450px"}} src={eachArticle.imgPath} alt="Card image cap" />
                     <CardBody style={{marginBottom: "20px"}}>
                     <h3>Reportado en: {eachArticle.location}</h3>
                     <CardTitle><p className="title-news-card">{eachArticle.newsTitle}</p></CardTitle>

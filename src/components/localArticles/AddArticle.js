@@ -23,7 +23,8 @@ class AddArticle extends Component {
     fileUploadHandler = () => {
         const fd = new FormData();
         fd.append('photo', this.state.selectedFile, this.state.selectedFile.name)
-        return (axios.post('http://localhost:5000/add_photo', fd, {
+        // return (axios.post('http://localhost:5000/add_photo', fd, {
+        return (axios.post(`${process.env.REACT_APP_API_URL}/add_photo`, fd, {
             headers: {
                 'Content-Type': 'multipart/form-data'
             }
@@ -56,7 +57,8 @@ class AddArticle extends Component {
                 body: JSON.stringify(data),
                 credentials: "include"
             }
-            fetch("http://localhost:5000/add_article", options)
+            // fetch("http://localhost:5000/add_article", options)
+            fetch(`${process.env.REACT_APP_API_URL}/add_article`, options)
             .then(() => {
                 this.setState({
                     newsTitle: '',

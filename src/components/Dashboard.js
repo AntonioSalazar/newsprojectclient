@@ -15,8 +15,8 @@ class Dashboard extends Component {
   }
 
   allNews = () => {
-    fetch("https://newsapi.org/v2/top-headlines?country=mx&apiKey=8631d37e5233459cb78edcb073b174ff")
-    // fetch("https://newsapi.org/v2/top-headlines?country=mx&category=science&apiKey=8631d37e5233459cb78edcb073b174ff")
+    // fetch("https://newsapi.org/v2/top-headlines?country=mx&apiKey=8631d37e5233459cb78edcb073b174ff")
+    fetch("https://newsapi.org/v2/top-headlines?country=mx&category=science&apiKey=8631d37e5233459cb78edcb073b174ff")
     .then(newFromAPI => {
       newFromAPI.json()
       .then(data => {
