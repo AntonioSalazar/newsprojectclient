@@ -19,7 +19,6 @@ class ArticleDetails extends Component {
     const {params} = this.props.match
     fetch(`https://newsapi.org/v2/top-headlines?country=mx&category=${params.topic}&apiKey=8631d37e5233459cb78edcb073b174ff`)
     .then(responseFromAPI => {
-      // console.log(responseFromAPI);  --> Response {type: "cors", url: "https://newsapi.org/v2/top-headlines?country=mx&ca…echnology&apiKey=8631d37e5233459cb78edcb073b174ff", redirected: false, status: 200, ok: true, …}
       responseFromAPI.json()
       .then(jsonWithArticles => {
         const theArticles = jsonWithArticles.articles
@@ -36,9 +35,9 @@ class ArticleDetails extends Component {
 
   render(){
     const {params} = this.props.match
+    console.log(this.state.theArticle.url);
     return(
       <div>
-        {/* <NewsOptions /> */}
         <Card className="newsCard" style={{textAlign: 'left'}}>
           {
             this.state.theArticle.map((oneArticle, index) => {
@@ -48,8 +47,9 @@ class ArticleDetails extends Component {
                   <CardBody style={{marginBottom: "20px"}}>
                   <CardTitle><p className="title-news-card">{oneArticle.title}</p></CardTitle>
                   <CardSubtitle><p>{oneArticle.description}</p></CardSubtitle>
-              
-                  <Button color="primary">Ver noticia completa</Button>{' '}
+                  <a href={oneArticle.url}>
+                    <Button color="primary">Ver noticia completa</Button>{' '}
+                  </a>
                   <Link to={`/news/${params.topic}`} style={{textDecoration: "none"}}>
                     <Button color="primary">Regresar</Button>{' '}
                   </Link>

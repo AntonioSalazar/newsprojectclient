@@ -63,6 +63,7 @@ class Navbar extends Component {
                   <img src={logo} alt={logo} />
                 </Link>
               </li>
+              <div className='login-signup-btn'>
               <li>
                 <Link to='/login' style={{ textDecoration: 'none' }}>
                   <Button color="primary">Login</Button>{' '}
@@ -73,6 +74,7 @@ class Navbar extends Component {
                   <Button color="primary">Signup</Button>{' '}
                 </Link>
               </li>
+              </div>
             </ul>
           </nav>  
             <div className="weather-widget">

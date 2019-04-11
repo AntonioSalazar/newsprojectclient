@@ -290,3 +290,9 @@ nav Link {
   justify-content: space-around;
 }
 
+.login-signup-btn{
+  width: 200px;
+  display: flex;
+  justify-content: space-between;
+  margin-right: 10px;
+}

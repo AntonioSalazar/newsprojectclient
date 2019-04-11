@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import { Card, CardImg, CardBody,
     CardTitle, CardSubtitle, Button } from 'reactstrap';
 import { Link } from "react-router-dom"
-// import NewsOptions from './NewsOptions'
 
 class DashboardArticle extends Component {
 
@@ -36,7 +35,6 @@ class DashboardArticle extends Component {
     render(){
         return(
             <div style={{marginTop: "20px", paddingBottom: "20px"}}>
-            {/* <NewsOptions /> */}
             <Card className="newsCard" style={{textAlign: 'left'}}>
               {
                 this.state.individualArticle.map((oneArticle, index) => {
@@ -46,7 +44,9 @@ class DashboardArticle extends Component {
                       <CardBody style={{marginBottom: "20px"}}>
                       <CardTitle><p className="title-news-card">{oneArticle.title}</p></CardTitle>
                       <CardSubtitle><p>{oneArticle.description}</p></CardSubtitle>
-                      <Button color="primary">Ver noticia completa</Button>{' '}
+                      <a href={oneArticle.url}>
+                        <Button color="primary">Ver noticia completa</Button>{' '}
+                      </a>
                       <Link to={`/`} style={{textDecoration: "none"}}>
                         <Button color="primary">Regresar</Button>{' '}
                       </Link>
