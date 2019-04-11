@@ -23,7 +23,6 @@ class AddArticle extends Component {
     fileUploadHandler = () => {
         const fd = new FormData();
         fd.append('photo', this.state.selectedFile, this.state.selectedFile.name)
-        // return (axios.post('http://localhost:5000/add_photo', fd, {
         return (axios.post(`${process.env.REACT_APP_API_URL}/add_photo`, fd, {
             headers: {
                 'Content-Type': 'multipart/form-data'
@@ -57,7 +56,6 @@ class AddArticle extends Component {
                 body: JSON.stringify(data),
                 credentials: "include"
             }
-            // fetch("http://localhost:5000/add_article", options)
             fetch(`${process.env.REACT_APP_API_URL}/add_article`, options)
             .then(() => {
                 this.setState({
@@ -99,7 +97,7 @@ class AddArticle extends Component {
                         <input type="text" value={this.state.newsContent} name="newsContent" placeholder="Cuentanos todo sobre tu reporte" onChange={e => this.handleChange(e)} required/>
                             <hr/>
                         <label htmlFor="location">Ubicacion</label>
-                        <input type="text" value={this.state.location} name="location" placeholder="Donde ocurrio" onChange={e => this.handleChange(e)}/>
+                        <input type="text" value={this.state.location} name="location" placeholder="Donde ocurrio (Delegacion, Colonia)" onChange={e => this.handleChange(e)}/>
                             <hr/>
                         <label htmlFor="photo">Imagen</label>
                         <input type="file" name="photo"  onChange={this.fileSelectHandler} required/>
