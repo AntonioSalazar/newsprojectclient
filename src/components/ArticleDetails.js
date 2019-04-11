@@ -2,7 +2,6 @@ import React, {Component} from "react";
 import { Card, CardImg, CardBody,
   CardTitle, CardSubtitle, Button } from 'reactstrap';
 import {Link} from "react-router-dom";
-// import NewsOptions from './NewsOptions'
 
 
 class ArticleDetails extends Component {
