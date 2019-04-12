@@ -6,7 +6,6 @@ import logo from "../assets/logo.png"
 import TweetsScience from "./TweetComponents/TweetsScience"
 import TweetsTech from "./TweetComponents/TweetsTech"
 import TweetsSports from "./TweetComponents/TweetSports"
-// import NewsOptions from "./NewsOptions"
 
 class NewsCard extends Component {
   state = {
