@@ -59,7 +59,9 @@ class Login extends Component {
                 <input type="text" name="username" value={this.state.username} onChange={ e => this.handleChange(e)} placeholder="Email"/>
                 <label>Password:</label>
                 <input type="password" name="password" value={this.state.password} onChange={ e => this.handleChange(e)}  placeholder="Contrasena"/>
-                <input type="submit" value="Login" className="submit-btn" style={{marginTop: '10px'}}/>
+                <div>
+                  <input type="submit" value="Login" className="submit-btn-login" />
+                </div>
               </form>
               <p>No tienes cuenta? 
                   <Link to={"/signup"}> Signup</Link>
