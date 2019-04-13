@@ -16,7 +16,6 @@ class IndependentArticleDetails extends Component {
 
   getArticleById = () => {
     const {params} = this.props.match
-    // fetch(`http://localhost:5000/independent_articles/${params.id}`)
     fetch(`${process.env.REACT_APP_API_URL}/independent_articles/${params.id}`)
     .then(responseFromAPI => {
       responseFromAPI.json()
@@ -41,7 +40,6 @@ class IndependentArticleDetails extends Component {
                   <CardImg top width='100%' src={imgPath} alt='Card image cap'/>
                   <CardBody style={{marginBottom: '20px'}}>
                   <h3>Reportado en: {location}</h3>
-                  <h5>Autor: {author}</h5>
                     <CardTitle><p className="title-news-card">{newsTitle}</p></CardTitle>
                     <CardSubtitle><p>{newsContent}</p></CardSubtitle>
                     <Link to="/localArticles">

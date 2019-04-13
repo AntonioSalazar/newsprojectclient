@@ -11,7 +11,6 @@ class LocalArticles extends Component {
   }
 
   getArticlesFromAPI = () => {
-    // fetch("http://localhost:5000/independent_articles")
     fetch(`${process.env.REACT_APP_API_URL}/independent_articles`)
     .then(newFromAPI => {
       newFromAPI.json()
