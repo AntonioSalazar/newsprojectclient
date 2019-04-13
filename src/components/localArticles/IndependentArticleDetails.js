@@ -32,7 +32,7 @@ class IndependentArticleDetails extends Component {
 
 
   render() {
-    const {imgPath, newsTitle, newsContent, location, author} = this.state.independentAricles
+    const {imgPath, newsTitle, newsContent, location} = this.state.independentAricles
     return (
       <div>
         <Card className='newsCard' style={{textAlign: 'left'}}>
